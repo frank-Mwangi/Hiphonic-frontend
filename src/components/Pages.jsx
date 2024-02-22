@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./pages.scss";
 import websiteIcon from "../assets/websitedesign.png";
 import mobileIcon from "../assets/mobiledesign.png";

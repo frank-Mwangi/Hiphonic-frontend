@@ -1,0 +1,73 @@
+.bio {
+  display: flex;
+  flex-direction: row;
+  //padding: 10px;
+  margin-left: 10px;
+  height: 30%;
+  position: relative;
+  top: -40px;
+
+  .handle {
+    flex: 1.5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+      position: relative;
+      top: -30px;
+      color: gray;
+    }
+  }
+  .biodeets {
+    display: flex;
+    background-color: #fafbfc;
+    border-radius: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    //border: 2px solid blue;
+
+    flex: 5;
+    .bio-info {
+      margin: 10px;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      border-right: 2px solid gray;
+      align-items: center;
+      justify-content: center;
+      gap: none;
+      width: 25%;
+      h4 {
+        font-size: 14px;
+        font-weight: bold;
+        color: gray;
+      }
+      p {
+        font-weight: bold;
+        font-size: 12px;
+        position: relative;
+        top: -25px;
+      }
+    }
+    .likes {
+      border: none;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    .handle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
