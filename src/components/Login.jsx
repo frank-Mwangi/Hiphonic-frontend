@@ -34,6 +34,28 @@ const Login = () => {
 
     return (
         <>
+            <div className="logincontainer">
+                <form action="" className="login" onSubmit={handleSubmit(onSubmit)}>
+                    <h1>Login...</h1>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Enter your username..."
+                        {...register("username")}
+                    />
+                    <p>{errors.username?.message}</p>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Enter your password..."
+                        {...register("password")}
+                    />
+                    <p>{errors.password?.message}</p>
+                    <input type="submit" value="Login" className="submit" />
+                </form>
+            </div>
 
         </>
     );
