@@ -10,8 +10,8 @@ import eventsIcon from "../assets/events.png";
 import websiteIcon from "../assets/websitedesign.png";
 import productIcon from "../assets/productdesign.png";
 import mobileIcon from "../assets/mobiledesign.png";
-//import { Link } from "react-router-dom";
-//import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const menu = [
@@ -50,12 +50,12 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="avatar">
         <img src={avi} alt="no=avi" />
-        {/* <NavLink to="/home" style={{ textDecoration: "none" }}> */}
-        <div className="details">
-          <h4>Kaizer Soze</h4>
-          <p>@K.soze</p>
-        </div>
-        {/* </NavLink> */}
+        <NavLink to="/home" style={{ textDecoration: "none" }}>
+          <div className="details">
+            <h4>Kaizer Soze</h4>
+            <p>@K.soze</p>
+          </div>
+        </NavLink>
       </div>
       <div className="menu">
         <h2>MENU</h2>
@@ -63,12 +63,12 @@ const Sidebar = () => {
           menu.map((item, index) => {
             return (
               <div className="menuitem" key={index}>
-                {/* <NavLink to={item.link} end> */}
-                <div className="menuitemleft">
-                  <img src={item.icon} alt="no-icon" />
-                  <span>{item.label}</span>
-                </div>
-                {/* </NavLink> */}
+                <NavLink to={item.link} end>
+                  <div className="menuitemleft">
+                    <img src={item.icon} alt="no-icon" />
+                    <span>{item.label}</span>
+                  </div>
+                </NavLink>
               </div>
             );
           })}
