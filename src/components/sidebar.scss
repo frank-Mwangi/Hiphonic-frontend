@@ -1,0 +1,131 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  // border: 2px solid blue;
+  flex: 1;
+  .avatar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    //border: 2px solid red;
+    align-items: center;
+    margin-left: 10px;
+    height: 8%;
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: lightgray;
+    text-decoration: none;
+
+    img {
+      height: 40px;
+      width: 35px;
+      border-radius: 50%;
+    }
+    .details {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      //border: 2px dotted black;
+      h4 {
+        text-decoration: none;
+        margin-bottom: 0;
+        font-size: 12px;
+        color: black;
+      }
+      p {
+        margin-top: 0;
+        font-size: 10px;
+        color: gray;
+      }
+    }
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //border: 2px solid red;
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 12rem;
+    color: gray;
+    h2 {
+      color: gray;
+      font-weight: bold;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    .menuitem {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      //border: 2px solid salmon;
+      text-decoration: none;
+    }
+    .menuitem a {
+      text-decoration: none;
+      color: gray;
+      //border: 2px solid blue;
+    }
+
+    .menuitemleft {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: gray;
+      font-weight: bold;
+      img {
+        height: 15px;
+        width: 15px;
+      }
+      // a {
+      //   text-decoration: none;
+      //   font-size: 12px;
+
+      //   //text-decoration: none;
+      // }
+    }
+    .menuItemRight {
+      display: flex;
+      //border: 2px solid black;
+      height: 20px;
+      justify-content: flex-end;
+      margin-right: 20px;
+      align-items: center;
+      span {
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        height: 15px;
+        width: 10px;
+      }
+    }
+  }
+  .shortcuts {
+    display: flex;
+    //border: 2px solid red;
+    height: 11rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    h2 {
+      font-size: 12px;
+      color: gray;
+      letter-spacing: 2px;
+    }
+    .shortcut {
+      // border: 2px solid red;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      color: black;
+      font-weight: bold;
+      font-size: 11px;
+      img {
+        height: 30px;
+      }
+    }
+  }
+}
