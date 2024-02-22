@@ -1,47 +1,44 @@
-import { Route, Routes } from "react-router-dom";
-import Sidebar from "./Sidebar";
-// import MainContent from "./MainContent";
-import "../styles/container.scss";
-import Rightbar from "./Rightbar";
-// import Timeline from "../pages/Timeline";
-// import Friends from "../pages/Friends";
-import Navbar from "./Navbar";
-import Login from "../pages/Login";
-// import { useState, createContext } from "react";
-// import Notifications from "../pages/Notifications";
-// import Photos from "../pages/Photos";
-// import GroupsTop from "../pages/GroupsTop.jsx";
-// import Videos from "../pages/Videos.jsx";
-// import Event from "../pages/Event.jsx";
+.wholepage {
+  //font-family: Inter, Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-export const notifContext = createContext();
-const Container = () => {
-  const [notificationClicked, setNotificationClicked] = useState(false);
-  return (
-    <notifContext.Provider
-      value={{ notificationClicked, setNotificationClicked }}
-    >
-      <div className="wholepage">
-        <Navbar />
-        <div className="container">
-          <Sidebar />
-          <Routes>
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/home/" element={<MainContent />} />
-            <Route path="/timeline" element={<Timeline />} />
-            <Route path="/friends" element={<Friends />} />
-            <Route path="/groups" element={<GroupsTop />} />
-            <Route path="/videos" element={<Videos />} />
-            <Route path="/events" element={<Event />} />
-            <Route path="/photos" element={<Photos />} />
-          </Routes>
-
-          <Rightbar />
-        </div>
-      </div>
-    </notifContext.Provider>
-  );
-};
-
-export default Container;
+  .container {
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+    height: 100vh;
+    background-color: #f8fafc;
+    //border: 2px solid red;
+  }
+  @media screen and (max-width: 768px) {
+    .navbar {
+      //border: 2px solid aqua;
+      .navbody {
+        //border: 2px solid aqua;
+        input {
+          display: none;
+        }
+      }
+    }
+    .sidebar {
+      display: none;
+    }
+    .rightbar {
+      display: none;
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      .photos {
+        display: flex;
+        overflow-x: hidden;
+      }
+    }
+  }
+}
