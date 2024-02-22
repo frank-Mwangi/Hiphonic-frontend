@@ -1,10 +1,12 @@
 import "./App.scss";
-import Register from "./components/Register";
+// import Register from "./components/Register";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
     <>
-      <Register />
+      {/* <Register /> */}
+      <Profile />
     </>
   );
 }

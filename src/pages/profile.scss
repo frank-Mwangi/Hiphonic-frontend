@@ -1,0 +1,70 @@
+.main {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  height: 60%;
+  gap: 5%;
+
+  .profile-info {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    gap: 10px;
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        color: blue;
+      }
+    }
+    .photo-wrapper {
+      .photos {
+        height: 180px;
+        //border: 2px solid black;
+        overflow: clip;
+        flex-shrink: 0;
+      }
+    }
+  }
+  .timeline {
+    //border: 2px solid pink;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    overflow-y: visible;
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    .profile-info {
+      .photo-wrapper {
+        height: 200px;
+        .photos {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .profile-info {
+      .photo-wrapper {
+        .photos {
+          height: 90px;
+          padding-right: 10px;
+        }
+      }
+    }
+    .timeline {
+      //border: 2px solid salmon;
+      position: relative;
+      top: -100px;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
