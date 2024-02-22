@@ -1,0 +1,24 @@
+.complete-profile {
+  background-color: #fff;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  //align-items: center;
+  border-radius: 10px;
+  font-weight: bold;
+  gap: 10px;
+  padding: 10px;
+  .input {
+    display: flex;
+    gap: 10px;
+    color: gray;
+    font-weight: bold;
+  }
+  @media screen and (max-width: 425px) {
+    margin-top: 100px;
+    //border: 2px solid blue;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}

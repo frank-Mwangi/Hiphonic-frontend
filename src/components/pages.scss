@@ -1,0 +1,37 @@
+.shortcuts {
+  display: flex;
+  //border: 2px solid red;
+  height: 11rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 10px;
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      font-size: 12px;
+      color: gray;
+      letter-spacing: 2px;
+    }
+    span {
+      font-size: 10px;
+      color: blue;
+    }
+  }
+  .shortcut {
+    // border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    color: black;
+    font-weight: bold;
+    font-size: 10px;
+    img {
+      height: 30px;
+    }
+  }
+}

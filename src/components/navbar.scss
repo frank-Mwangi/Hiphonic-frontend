@@ -1,0 +1,56 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  // border: 2px solid black;
+  max-height: 10vw;
+  width: 100%;
+  margin-bottom: 20px;
+  .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+    // border: 2px solid purple;
+    flex: 1;
+    font-size: 12px;
+    gap: 10px;
+    img {
+      height: 22px;
+      width: 22px;
+    }
+    h1 {
+      font-size: 18px;
+    }
+  }
+  .navbody {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 6;
+    // border: 2px solid yellow;
+    input {
+      width: 22rem;
+      border-radius: 5px;
+      height: 30px;
+    }
+  }
+  .navicons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+    justify-content: space-around;
+    //border: 2px solid salmon;
+    gap: 20px;
+    width: 100px;
+    img {
+      height: 15px;
+    }
+    .profilePic {
+      height: 40px;
+      width: 40px;
+      //border-radius: 50%;
+    }
+  }
+}
