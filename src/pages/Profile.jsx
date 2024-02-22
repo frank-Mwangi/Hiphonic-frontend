@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./profile.scss";
 import CompleteProfile from "../components/CompleteProfile";
 import Intro from "../features/Intro";

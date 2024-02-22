@@ -1,0 +1,9 @@
+.avi {
+  //border: 2px solid blue;
+  position: relative;
+  top: -40px;
+  margin-left: 10px;
+  @media screen and (max-width: 425px) {
+    right: -40%;
+  }
+}
