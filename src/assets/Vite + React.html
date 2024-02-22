@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:5173/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module">
+import RefreshRuntime from "/@react-refresh"
+RefreshRuntime.injectIntoGlobalHook(window)
+window.$RefreshReg$ = () => {}
+window.$RefreshSig$ = () => (type) => type
+window.__vite_plugin_react_preamble_installed__ = true
+</script>
+
+    <script type="module" src="./Vite + React_files/client"></script>
+
+    
+    <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Josefin+Sans&family=Outfit:wght@400;700&display=swap");
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite + React</title>
+  <style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/navbar.scss">.navbar {
+  display: flex;
+  flex-direction: row;
+  max-height: 10vw;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.navbar .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+  flex: 1;
+  font-size: 12px;
+  gap: 10px;
+}
+.navbar .logo img {
+  height: 22px;
+  width: 22px;
+}
+.navbar .logo h1 {
+  font-size: 18px;
+}
+.navbar .navbody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 6;
+}
+.navbar .navbody input {
+  width: 22rem;
+  border-radius: 5px;
+  height: 30px;
+}
+.navbar .navicons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+  justify-content: space-around;
+  gap: 20px;
+  width: 100px;
+}
+.navbar .navicons img {
+  height: 15px;
+}
+.navbar .navicons .profilePic {
+  height: 40px;
+  width: 40px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/sidebar.scss">.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  flex: 1;
+}
+.sidebar .avatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 10px;
+  height: 8%;
+  width: 80%;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: lightgray;
+}
+.sidebar .avatar img {
+  height: 40px;
+  width: 35px;
+  border-radius: 50%;
+}
+.sidebar .avatar .details {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .avatar .details h4 {
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.sidebar .avatar .details p {
+  margin-top: 0;
+  font-size: 10px;
+  color: gray;
+}
+.sidebar .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 10px;
+  height: 12rem;
+  color: gray;
+}
+.sidebar .menu h2 {
+  color: gray;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+.sidebar .menu .menuitem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.sidebar .menu .menuitemleft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: gray;
+  font-weight: bold;
+}
+.sidebar .menu .menuitemleft img {
+  height: 15px;
+  width: 15px;
+}
+.sidebar .menu .menuitemleft span {
+  font-size: 12px;
+}
+.sidebar .menu .menuItemRight {
+  display: flex;
+  height: 20px;
+  justify-content: flex-end;
+  margin-right: 20px;
+  align-items: center;
+}
+.sidebar .menu .menuItemRight span {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  height: 15px;
+  width: 10px;
+}
+.sidebar .shortcuts {
+  display: flex;
+  height: 11rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 10px;
+}
+.sidebar .shortcuts h2 {
+  font-size: 12px;
+  color: gray;
+  letter-spacing: 2px;
+}
+.sidebar .shortcuts .shortcut {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 11px;
+}
+.sidebar .shortcuts .shortcut img {
+  height: 30px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/maincontent.scss">.maincontent {
+  display: flex;
+  flex-direction: column;
+  flex: 5.7;
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow-y: scroll;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/Header.scss">.header {
+  background-image: url("/src/assets/HeaderImg.jpg");
+  object-fit: cover;
+  height: 215px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 10px;
+}
+.header .edit {
+  background-color: white;
+  height: 30px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/hero.scss">.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  height: 16rem;
+  border-radius: 10px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/avi.scss">.avi {
+  position: relative;
+  top: -40px;
+  margin-left: 10px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/bio.scss">.bio {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  height: 30%;
+  position: relative;
+  top: -40px;
+}
+.bio .handle {
+  flex: 1.5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+}
+.bio .handle h2 {
+  font-size: 20px;
+}
+.bio .handle p {
+  font-size: 15px;
+  position: relative;
+  top: -30px;
+  color: gray;
+}
+.bio .biodeets {
+  display: flex;
+  background-color: #fafbfc;
+  border-radius: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 5;
+}
+.bio .biodeets .bio-info {
+  margin: 10px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid gray;
+  align-items: center;
+  justify-content: center;
+  gap: none;
+  width: 25%;
+}
+.bio .biodeets .bio-info h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: gray;
+}
+.bio .biodeets .bio-info p {
+  font-weight: bold;
+  font-size: 12px;
+  position: relative;
+  top: -25px;
+}
+.bio .biodeets .likes {
+  border: none;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/main.scss">.main {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  height: 60%;
+  gap: 5%;
+}
+.main .profile-info {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  gap: 10px;
+}
+.main .timeline {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/completeprofile.scss">.complete-profile {
+  background-color: #fff;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 10px;
+  font-weight: bold;
+  gap: 10px;
+  padding: 10px;
+}
+.complete-profile .input {
+  display: flex;
+  gap: 10px;
+  color: gray;
+  font-weight: bold;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/intro.scss">.intro {
+  background-color: #fff;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+}
+.intro .title {
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.intro .title img {
+  height: 25px;
+}
+.intro .about {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  color: gray;
+  font-weight: bold;
+  font-size: 15px;
+  padding-bottom: 10px;
+  height: 30px;
+  border-bottom: 1px solid black;
+}
+.intro .personal-info {
+  display: flex;
+  flex-direction: column;
+}
+.intro .personal-info .info {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 20px;
+  gap: 15px;
+}
+.intro .personal-info .info img {
+  height: 20px;
+}
+.intro .personal-info .info h4 {
+  font-size: 15px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/newpost.scss">.newpost {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+}
+.newpost .input {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d9d9e0;
+  gap: 20px;
+  margin: 10px;
+  padding-bottom: 10px;
+}
+.newpost .input input {
+  height: 30px;
+  width: 87%;
+  padding: 10px;
+  background-color: #f8fafc;
+  border-radius: 10px;
+  border: none;
+}
+.newpost .options {
+  display: flex;
+  justify-content: space-around;
+}
+.newpost .options .option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #94a3b8;
+  font-weight: bold;
+  font-size: 18px;
+}
+.newpost .options .option img {
+  height: 30px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/post.scss">.post {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #fff;
+  padding-right: 10px;
+  margin-top: 20px;
+}
+.post .handle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+.post .handle img {
+  height: 50px;
+}
+.post .handle .name {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.post .handle .name h4 {
+  font-size: 12px;
+  position: relative;
+  bottom: -10px;
+}
+.post .handle .name p {
+  font-size: 12px;
+  position: relative;
+  top: -15px;
+  color: gray;
+}
+.post .textContent {
+  position: relative;
+  top: -20px;
+  padding-left: 10px;
+}
+.post .images {
+  position: relative;
+  top: -30px;
+  display: flex;
+  justify-content: space-around;
+}
+.post .images img {
+  width: 30%;
+}
+.post .impressions {
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.post .impressions .impression {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.post .impressions .impression img {
+  width: 20px;
+  height: 20px;
+}
+.post .impressions .impression p {
+  color: gray;
+  font-weight: bold;
+}
+.post .comment {
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  background-color: #e8eff7;
+  border-radius: 10px;
+}
+.post .comment input {
+  background-color: #e8eff7;
+  width: 90%;
+  border: none;
+  padding: 10px;
+}
+.post .comment button {
+  border: none;
+  display: flex;
+  align-items: center;
+  background-color: #e8eff7;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/container.scss">.container {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  height: 100vh;
+  background-color: #f8fafc;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/rightbar.scss">.rightbar {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/Pages.scss">.shortcuts {
+  display: flex;
+  height: 11rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 10px;
+}
+.shortcuts .title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.shortcuts .title h2 {
+  font-size: 12px;
+  color: gray;
+  letter-spacing: 2px;
+}
+.shortcuts .title span {
+  font-size: 10px;
+  color: blue;
+}
+.shortcuts .shortcut {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  color: black;
+  font-weight: bold;
+  font-size: 10px;
+}
+.shortcuts .shortcut img {
+  height: 30px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/contacts.scss">.contacts {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+}
+.contacts .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.contacts h1 {
+  font-size: 12px;
+  color: gray;
+}
+.contacts span {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  margin-left: 20px;
+  color: blue;
+}
+.contacts .contact-list {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contacts .contact-list .contact {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+.contacts .contact-list .contact p {
+  font-size: 10px;
+  font-weight: bold;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/styles/groups.scss">.groups {
+  display: flex;
+  flex-direction: column;
+}
+.groups .title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.groups .title h2 {
+  font-size: 15px;
+  color: gray;
+}
+.groups .title span {
+  font-size: 12px;
+  color: blue;
+}
+.groups .group-list {
+  display: flex;
+  flex-direction: column;
+}
+.groups .group-list .group {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+}
+.groups .group-list .group img {
+  height: 30px;
+}
+.groups .group-list .group p {
+  font-weight: bold;
+  font-size: 15px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/User/Desktop/Social-Media_App/src/index.scss"></style></head>
+  <body data-new-gr-c-s-check-loaded="14.1152.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+    <div id="root"><div class="app"><div class="navbar"><div class="logo"><img src="./Vite + React_files/menu.png" alt="no menu"><img src="./Vite + React_files/logo.png" alt="no logo"><h1>Hiphonic</h1></div><div class="navbody"><div><input type="text" placeholder="Search..."></div><div class="navicons"><img src="./Vite + React_files/message.png" alt="no-icon"><img src="./Vite + React_files/notification.png" alt="no-icon"><img src="./Vite + React_files/Avatar.png" alt="no-icon" class="profilePic"><img src="./Vite + React_files/chevron-down.png" alt="no-icon"></div></div></div><div class="container"><div class="sidebar"><div class="avatar"><img src="./Vite + React_files/Avatar.png" alt="no=avi"><div class="details"><h4>Kaizer Soze</h4><p>@K.soze</p></div></div><div class="menu"><h2>MENU</h2><div class="menuitem"><div class="menuitemleft"><img src="./Vite + React_files/timeline.png" alt="Timeline"><span class="noNotifStyle">Timeline</span></div><div class="menuItemRight"></div></div><div class="menuitem"><div class="menuitemleft"><img src="./Vite + React_files/friends.png" alt="Friends"><span class="noNotifStyle">Friends</span></div><div class="menuItemRight"></div></div><div class="menuitem"><div class="menuitemleft"><img src="./Vite + React_files/groups.png" alt="Groups"><span class="noNotifStyle">Groups</span></div><div class="menuItemRight"></div></div><div class="menuitem"><div class="menuitemleft"><img src="./Vite + React_files/videos.png" alt="Videos"><span class="noNotifStyle">Videos</span></div><div class="menuItemRight"></div></div><div class="menuitem"><div class="menuitemleft"><img src="./Vite + React_files/photos.png" alt="Photos"><span class="noNotifStyle">Photos</span></div><div class="menuItemRight"></div></div><div class="menuitem"><div class="menuitemleft"><img src="./Vite + React_files/events.png" alt="Events"><span style="color: rgb(237, 79, 157);"> Events</span></div><div class="menuItemRight"><span style="color: white; background-color: rgb(237, 79, 157); border-radius: 50%; padding: 3px 5px;">10</span></div></div></div><div class="shortcuts"><h2>SHORTCUTS</h2><div class="shortcut"><img src="./Vite + React_files/websitedesign.png" alt="no-icon"><p>Website Design</p></div><div class="shortcut"><img src="./Vite + React_files/mobiledesign.png" alt="no-icon"><p>Mobile Design</p></div><div class="shortcut"><img src="./Vite + React_files/productdesign.png" alt="no-icon"><p>Product Design</p></div></div></div><div class="maincontent"><div class="hero"><div class="header"><button class="edit">Edit Profile</button></div><div class="avi"><img src="./Vite + React_files/Avatar.png" alt="no-avi"></div><div class="bio"><div class="handle"><h2>Kaiser Soze</h2><p>@K.soze</p></div><div class="biodeets"><div class="bio-info"><h4>POSTS</h4><p>683</p></div><div class="bio-info"><h4>FRIENDS</h4><p>5.7K</p></div><div class="bio-info"><h4>PHOTOS</h4><p>296</p></div><div class="likes bio-info"><h4>LIKES</h4><p>10.7K</p></div></div></div></div><div class="main"><div class="profile-info"><div class="complete-profile"><label for="profile">Complete Your Profile</label><div class="input"><input type="range" name="profile" id="profile" min="0" max="100" value="80"><span>80%</span></div></div><div class="intro"><div class="title"><h4>Intro</h4><img src="./Vite + React_files/dots.png" alt="no-icon"></div><div class="about"><p>I am an experienced joiner with well developed skills.</p></div><div class="personal-info"><div class="info"><img src="./Vite + React_files/map-pin.png" alt=""><h4>2972 Westheimer Rd.</h4></div><div class="info"><img src="./Vite + React_files/briefcase.png" alt=""><h4>Binford Ltd.</h4></div><div class="info"><img src="./Vite + React_files/calendar.png" alt=""><h4>September 24, 2017</h4></div><div class="info"><img src="./Vite + React_files/link.png" alt=""><h4>dribble.com/Angela</h4></div></div></div></div><div class="timeline"><div class="newpost"><div class="input"><img src="./Vite + React_files/Avatar.png" alt="no-pic"><input type="text" name="" id="" placeholder="What&#39;s on your mind?"></div><div class="options"><div class="option"><img src="./Vite + React_files/video.png" alt=""></div><div class="option"><img src="./Vite + React_files/photo.png" alt=""><p>Image/Video</p></div><div class="option"><img src="./Vite + React_files/star.png" alt=""><p>Activity</p></div></div></div><div class="post"><div class="handle"><img src="./Vite + React_files/Avatar.png" alt="no-avi"><div class="name"><h4>Kaiser Soze</h4><p>56 mins ago</p></div></div><div class="textContent"><p>Here are some photography works that I made on the weekend with some of my friends, happy for that!</p></div><div class="images"><img src="./Vite + React_files/photo2.png" alt="no-pic"><img src="./Vite + React_files/photo1.png" alt="no-pic"></div><div class="impressions"><div class="impression"><img src="./Vite + React_files/heart.png" alt="like-icon"><p>2.6K Likes</p></div><div class="impression"><img src="./Vite + React_files/message-circle.png" alt="comment-icon"><p>297 Comments</p></div><div class="impression"><img src="./Vite + React_files/share.png" alt="share-icon"><p>201 Share</p></div></div><form class="comment"><input type="text" name="comment" id="comment" class="write-comment" placeholder="Write your message ..."><button><img src="./Vite + React_files/mood-smile.png" alt=""></button><button><img src="./Vite + React_files/link.png" alt=""></button></form></div></div></div></div><div class="rightbar"><div class="shortcuts"><div class="title"><h2>YOUR PAGES</h2><span>See all</span></div><div class="shortcut"><img src="./Vite + React_files/websitedesign.png" alt="no-icon">Website Design</div><div class="shortcut"><img src="./Vite + React_files/mobiledesign.png" alt="no-icon">Mobile Design</div><div class="shortcut"><img src="./Vite + React_files/productdesign.png" alt="no-icon">Product Design</div></div><div class="contacts"><div class="title"><h1>CONTACTS</h1><span>See all</span></div><div class="contact-list"><div class="contact"><img src="./Vite + React_files/wade.png" alt="no-pic"><p>Wade Warren</p></div><div class="contact"><img src="./Vite + React_files/jane.png" alt="no-pic"><p>Jane Cooper</p></div><div class="contact"><img src="./Vite + React_files/esther.png" alt="no-pic"><p>Esther Howard</p></div><div class="contact"><img src="./Vite + React_files/cameron.png" alt="no-pic"><p>Cameron Williamson</p></div><div class="contact"><img src="./Vite + React_files/Brooklyn.png" alt="no-pic"><p>Brooklyn Simmons</p></div></div></div><div class="groups"><div class="title"><h2>GROUPS</h2><span>See all</span></div><div class="group-list"><div class="group"><img src="./Vite + React_files/Group1.png" alt="no-icon"><p>Design Enthusiast</p></div><div class="group"><img src="./Vite + React_files/Group2.png" alt="no-icon"><p>UI Official</p></div><div class="group"><img src="./Vite + React_files/Group3.png" alt="no-icon"><p>Web Designer</p></div></div></div></div></div></div></div>
+    <script type="module" src="./Vite + React_files/main.jsx"></script>
+  
+
+<vite-error-overlay><template shadowrootmode="open">
+<style>
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  --monospace: 'SFMono-Regular', Consolas,
+  'Liberation Mono', Menlo, Courier, monospace;
+  --red: #ff5555;
+  --yellow: #e2aa53;
+  --purple: #cfa4ff;
+  --cyan: #2dd9da;
+  --dim: #c9c9c9;
+
+  --window-background: #181818;
+  --window-color: #d8d8d8;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.66);
+}
+
+.window {
+  font-family: var(--monospace);
+  line-height: 1.5;
+  width: 800px;
+  color: var(--window-color);
+  margin: 30px auto;
+  padding: 25px 40px;
+  position: relative;
+  background: var(--window-background);
+  border-radius: 6px 6px 8px 8px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  overflow: hidden;
+  border-top: 8px solid var(--red);
+  direction: ltr;
+  text-align: left;
+}
+
+pre {
+  font-family: var(--monospace);
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 1em;
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre.frame::-webkit-scrollbar {
+  display: block;
+  height: 5px;
+}
+
+pre.frame::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 5px;
+}
+
+pre.frame {
+  scrollbar-width: thin;
+}
+
+.message {
+  line-height: 1.3;
+  font-weight: 600;
+  white-space: pre-wrap;
+}
+
+.message-body {
+  color: var(--red);
+}
+
+.plugin {
+  color: var(--purple);
+}
+
+.file {
+  color: var(--cyan);
+  margin-bottom: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.frame {
+  color: var(--yellow);
+}
+
+.stack {
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.tip {
+  font-size: 13px;
+  color: #999;
+  border-top: 1px dotted #999;
+  padding-top: 13px;
+  line-height: 1.8;
+}
+
+code {
+  font-size: 13px;
+  font-family: var(--monospace);
+  color: var(--yellow);
+}
+
+.file-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+kbd {
+  line-height: 1.5;
+  font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgb(38, 40, 44);
+  color: rgb(166, 167, 171);
+  padding: 0.15rem 0.3rem;
+  border-radius: 0.25rem;
+  border-width: 0.0625rem 0.0625rem 0.1875rem;
+  border-style: solid;
+  border-color: rgb(54, 57, 64);
+  border-image: initial;
+}
+</style>
+<div class="backdrop" part="backdrop">
+  <div class="window" part="window">
+    <pre class="message" part="message"><span class="plugin" part="plugin">[plugin:vite:react-babel] </span><span class="message-body" part="message-body">C:\Users\User\Desktop\Social-Media_App\src\components\Sidebar.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment &lt;&gt;...&lt;/&gt;? (192:4)
+
+  190 |         &lt;/div&gt;
+  191 |       &lt;/div&gt;
+&gt; 192 |     &lt;/div&gt;
+      |     ^
+  193 |   );
+  194 | };
+  195 |</span></pre>
+    <pre class="file" part="file">C:<a class="file-link">/Users/User/Desktop/Social-Media_App/src/components/Sidebar.jsx:192:4</a></pre>
+    <pre class="frame" part="frame"></pre>
+    <pre class="stack" part="stack">    at constructor (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:356:19</a>)
+    at JSXParserMixin.raise (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:3223:19</a>)
+    at JSXParserMixin.jsxParseElementAt (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:6906:18</a>)
+    at JSXParserMixin.jsxParseElement (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:6915:17</a>)
+    at JSXParserMixin.parseExprAtom (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:6927:19</a>)
+    at JSXParserMixin.parseExprSubscripts (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10857:23</a>)
+    at JSXParserMixin.parseUpdate (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10840:21</a>)
+    at JSXParserMixin.parseMaybeUnary (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10816:23</a>)
+    at JSXParserMixin.parseMaybeUnaryOrPrivate (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10654:61</a>)
+    at JSXParserMixin.parseExprOps (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10659:23</a>)
+    at JSXParserMixin.parseMaybeConditional (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10636:23</a>)
+    at JSXParserMixin.parseMaybeAssign (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10597:21</a>)
+    at JSXParserMixin.parseExpressionBase (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10551:23</a>)
+    at <a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10547:39</a>
+    at JSXParserMixin.allowInAnd (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12279:16</a>)
+    at JSXParserMixin.parseExpression (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10547:17</a>)
+    at JSXParserMixin.parseStatementContent (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12737:23</a>)
+    at JSXParserMixin.parseStatementLike (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12588:17</a>)
+    at JSXParserMixin.parseStatementListItem (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12568:17</a>)
+    at JSXParserMixin.parseBlockOrModuleBlockBody (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:13189:61</a>)
+    at JSXParserMixin.parseBlockBody (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:13182:10</a>)
+    at JSXParserMixin.parseBlock (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:13170:10</a>)
+    at JSXParserMixin.parseFunctionBody (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:11935:24</a>)
+    at JSXParserMixin.parseArrowExpression (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:11910:10</a>)
+    at JSXParserMixin.parseParenAndDistinguishExpression (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:11511:12</a>)
+    at JSXParserMixin.parseExprAtom (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:11137:23</a>)
+    at JSXParserMixin.parseExprAtom (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:6932:20</a>)
+    at JSXParserMixin.parseExprSubscripts (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10857:23</a>)
+    at JSXParserMixin.parseUpdate (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10840:21</a>)
+    at JSXParserMixin.parseMaybeUnary (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10816:23</a>)
+    at JSXParserMixin.parseMaybeUnaryOrPrivate (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10654:61</a>)
+    at JSXParserMixin.parseExprOps (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10659:23</a>)
+    at JSXParserMixin.parseMaybeConditional (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10636:23</a>)
+    at JSXParserMixin.parseMaybeAssign (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10597:21</a>)
+    at <a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10567:39</a>
+    at JSXParserMixin.allowInAnd (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12279:16</a>)
+    at JSXParserMixin.parseMaybeAssignAllowIn (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:10567:17</a>)
+    at JSXParserMixin.parseVar (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:13259:91</a>)
+    at JSXParserMixin.parseVarStatement (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:13100:10</a>)
+    at JSXParserMixin.parseStatementContent (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12683:23</a>)
+    at JSXParserMixin.parseStatementLike (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12588:17</a>)
+    at JSXParserMixin.parseModuleItem (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12565:17</a>)
+    at JSXParserMixin.parseBlockOrModuleBlockBody (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:13189:36</a>)
+    at JSXParserMixin.parseBlockBody (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:13182:10</a>)
+    at JSXParserMixin.parseProgram (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12464:10</a>)
+    at JSXParserMixin.parseTopLevel (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:12454:25</a>)
+    at JSXParserMixin.parse (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:14376:10</a>)
+    at parse (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+parser@7.23.6\node_modules\@babel\parser\lib\index.js:14417:38</a>)
+    at parser (<a class="file-link">C:\Users\User\Desktop\Social-Media_App\node_modules\.pnpm\@babel+core@7.23.7\node_modules\@babel\core\lib\parser\index.js:41:34</a></pre>
+    <div class="tip" part="tip">
+      Click outside, press <kbd>Esc</kbd> key, or fix the code to dismiss.<br>
+      You can also disable this overlay by setting
+      <code part="config-option-name">server.hmr.overlay</code> to <code part="config-option-value">false</code> in <code part="config-file-name">vite.config.js.</code>
+    </div>
+  </div>
+</div>
+</template></vite-error-overlay></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
