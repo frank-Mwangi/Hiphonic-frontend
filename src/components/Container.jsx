@@ -2,12 +2,12 @@
 import Sidebar from "./Sidebar";
 // import MainContent from "./MainContent";
 import "./container.scss";
-import Rightbar from "./Rightbar";
+import Rightbar from "./RightSidebar";
 // import Timeline from "../pages/Timeline";
 // import Friends from "../pages/Friends";
 import Navbar from "./Navbar";
 // import Login from "./components/Login";
-import Login from "./Login  ";
+import Login from "./Login";
 import { useState, createContext } from "react";
 // import Notifications from "../pages/Notifications";
 // import Photos from "../pages/Photos";

@@ -1,5 +1,5 @@
 import React from "react";
-import "./spages.scss";
+import "./pages.scss";
 import websiteIcon from "../assets/websitedesign.png";
 import mobileIcon from "../assets/mobiledesign.png";
 import productIcon from "../assets/productdesign.png";
