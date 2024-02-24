@@ -1,0 +1,205 @@
+.videos-page {
+  display: flex;
+  flex-direction: column;
+  flex: 4.8;
+  max-width: 75vw;
+  margin: 20px;
+  overflow-y: scroll;
+
+  .top {
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+    padding-left: 20px;
+    .title {
+      border-bottom: 1px solid gray;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 12%;
+      margin-top: 10px;
+      .searchfield {
+        input {
+          display: none;
+        }
+      }
+      span {
+        border: 1px solid black;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        img {
+          height: 20px;
+        }
+      }
+    }
+    .categories {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        color: blue;
+        font-weight: bold;
+      }
+    }
+    .hero {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      .card {
+        border-radius: 10px;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        background-color: #e8eff7;
+        justify-content: center;
+        video {
+          width: 90%;
+          border-radius: 10px;
+          border: none;
+        }
+
+        button {
+          //border: 2px solid red;
+          height: 60px;
+          background-color: #fff;
+          border-radius: 6px;
+          border: none;
+          color: blue;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: 10px;
+
+    .handle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 15%;
+      padding: 20px;
+      .personal-details {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 30%;
+        // padding-left: 20px;
+        // margin-top: 20px;
+        img {
+          width: 60px;
+          height: 60px;
+        }
+        span {
+          h6 {
+            font-size: 18px;
+          }
+          p {
+            position: relative;
+            top: -30px;
+            color: gray;
+          }
+        }
+      }
+      span {
+        img {
+          height: 20px;
+        }
+      }
+    }
+    .text {
+      //border: 2px solid salmon;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      top: -40px;
+      //padding-right: 20px;
+    }
+    video {
+      max-width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+      border-radius: 10px;
+      position: relative;
+      top: -40px;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .top {
+      .title {
+        flex-direction: column;
+        height: 100px;
+        justify-content: center;
+        //border: 2px solid salmon;
+        .searchfield {
+          display: flex;
+          margin-bottom: 20px;
+          input {
+            display: flex;
+            border: 1px solid gray;
+            border-right: none;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+          }
+          span {
+            border: 1px solid gray;
+            border-radius: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-left: none;
+          }
+        }
+      }
+      .hero {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        .card {
+          width: 70%;
+          padding-right: 30px;
+
+          video {
+            width: 200px;
+            height: 250px;
+
+            object-fit: cover;
+          }
+          button {
+            height: 40px;
+          }
+        }
+      }
+    }
+    .bottom {
+      .handle {
+        .personal-details {
+          span {
+            justify-content: center;
+            p {
+              font-size: 11px;
+            }
+          }
+        }
+      }
+      .video {
+        //border: 2px solid salmon;
+        video {
+          height: 300px;
+          width: 425px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
