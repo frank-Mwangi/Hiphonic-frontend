@@ -5,6 +5,9 @@
   display: flex;
   justify-content: flex-end;
   border-radius: 10px;
+  form {
+    z-index: -1;
+  }
   // margin-right: 10px;
   @media screen and (max-width: 425px) {
     margin-right: 10px;

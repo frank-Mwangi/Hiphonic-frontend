@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  // border: 2px solid blue;
+  flex: 1;
+  position: fixed;
+  left: 0;
+  width: 15%;
+  height: 100vh;
+  padding: 0 !important;
   flex: 1;
   .avatar {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    //border: 2px solid red;
     align-items: center;
     margin-left: 10px;
     height: 8%;
@@ -45,10 +49,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    //border: 2px solid red;
     margin-top: 20px;
-    margin-left: 10px;
-    height: 12rem;
+    margin-left: 10%;
+    margin-bottom: 10%;
     color: gray;
     h2 {
       color: gray;
@@ -62,6 +65,7 @@
       justify-content: space-between;
       //border: 2px solid salmon;
       text-decoration: none;
+      padding: 7% 0;
     }
     .menuitem a {
       text-decoration: none;
@@ -104,25 +108,28 @@
   }
   .shortcuts {
     display: flex;
-    //border: 2px solid red;
     height: 11rem;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: 10px;
+    /* margin-left: 10px; */
+    margin-left: 10%;
+    position: relative;
+    /* top: 7%; */
+
     h2 {
       font-size: 12px;
       color: gray;
       letter-spacing: 2px;
     }
     .shortcut {
-      // border: 2px solid red;
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 10px;
       color: black;
       font-weight: bold;
-      font-size: 11px;
+      font-size: 14px;
+      padding: 3% 0;
       img {
         height: 30px;
       }
