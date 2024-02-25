@@ -12,7 +12,8 @@ import { Routes, Route } from 'react-router-dom'
 function App() {
   return (
     <>
-      {/* <Container /> */}
+      {/* <Container /> */ }
+      
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />

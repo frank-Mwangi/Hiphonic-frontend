@@ -1,29 +1,28 @@
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./register.scss";
+import { addUser } from "../features/users/usersSlice";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Register = () => {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const schema = yup.object().shape({
-    name: yup.string().required("name is required"),
-    username: yup.string().required("username is required"),
-    age: yup
-      .number("Age must be a number")
-      .positive("Age must be a positive number")
-      .required("Age is required"),
-    password: yup
+    TagName: yup.string().required("name is required"),
+    Username: yup.string().required("username is required"),
+    Password: yup
       .string()
       .required("Password is required")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$/,
         "Password must Contain 4 characters, an Uppercase, a Lowercase, a Number & a special character"
       ),
-    confirmPassword: yup
+    ConfirmPassword: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .oneOf([yup.ref("Password"), null], "Passwords must match"),
   });
 
   const {
@@ -33,6 +32,7 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   let registeredUsers = [];
   let storedUsers = localStorage.getItem("users");
   if (!storedUsers) {
@@ -41,11 +41,15 @@ const Register = () => {
     registeredUsers = JSON.parse(storedUsers);
   }
 
-  const onSubmit = (data) => {
-    registeredUsers.push(data);
-    localStorage.setItem("users", JSON.stringify(registeredUsers));
-    console.log(registeredUsers);
-    //navigate("/login");
+  const onSubmit = async (data) => {
+    console.log("data is ", data);
+
+    const { payload } = await dispatch(addUser(data));
+    const { message } = payload;
+
+    if (message) {
+      navigate("/login");
+    }
   };
   return (
     <>
@@ -54,42 +58,48 @@ const Register = () => {
           <h1>Register</h1>
           <input
             type="text"
-            placeholder="Enter your name"
-            {...register("name")}
+            placeholder="Enter your username"
+            {...register("Username")}
           />
           <p>{errors.name?.message}</p>
         </>
         <>
           <input
             type="text"
-            placeholder="Enter your username..."
-            {...register("username")}
+            placeholder="@iamrich..."
+            {...register("TagName")}
           />
-          <p>{errors.username?.message}</p>
+          <p>{errors.Username?.message}</p>
         </>
         <>
           <input
-            type="number"
-            placeholder="Enter your age..."
-            {...register("age")}
+            type="text"
+            placeholder="example@gmail.com..."
+            {...register("Email")}
           />
-          <p>{errors.age?.message}</p>
         </>
         <>
           <input
-            type="password"
+            type="text"
+            placeholder="254, North hampshire drive..."
+            {...register("Location")}
+          />
+        </>
+        <>
+          <input
+            type="Password"
             placeholder="Enter a password..."
-            {...register("password")}
+            {...register("Password")}
           />
-          <p>{errors.password?.message}</p>
+          <p>{errors.Password?.message}</p>
         </>
         <>
           <input
             type="password"
             placeholder="Confirm your password..."
-            {...register("confirmPassword")}
+            {...register("ConfirmPassword")}
           />
-          <p>{errors.confirmPassword?.message}</p>
+          <p>{errors.ConfirmPassword?.message}</p>
         </>
 
         <input
@@ -108,7 +118,7 @@ const Register = () => {
           Already have an account?
           <span>
             {" "}
-            <a href="/login"> Login </a>
+            <Link to="/login"> Login </Link>
           </span>
           instead.
         </p>

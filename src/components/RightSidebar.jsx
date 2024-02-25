@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./rightSidebar.scss";
 import Pages from "./Pages";
 import Contacts from "./Contacts";

@@ -5,8 +5,15 @@
   display: flex;
   justify-content: flex-end;
   border-radius: 10px;
+  position: relative;
   form {
-    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(133, 24, 24);
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: -1000;
   }
   // margin-right: 10px;
   @media screen and (max-width: 425px) {
