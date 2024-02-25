@@ -1,4 +1,3 @@
-import React from "react";
 import wade from "../assets/wade.png";
 import jane from "../assets/jane.png";
 import esther from "../assets/esther.png";

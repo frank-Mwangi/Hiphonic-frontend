@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   //border: 2px solid blue;
-  height: 60%;
+  // height: 60%;
   .title {
     display: flex;
     flex-direction: row;
@@ -23,7 +23,7 @@
     height: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
     //overflow-y: scroll;
 
     .contact {
@@ -35,7 +35,7 @@
       //border: 2px solid yellow;
       height: 40px;
       p {
-        font-size: 10px;
+        font-size: 14px;
         font-weight: bold;
       }
     }
