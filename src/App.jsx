@@ -6,11 +6,10 @@ import Login from "./components/Login";
 // import Sidebar from "./components/Sidebar";
 import Register from "./components/Register";
 // import Profile from "./pages/Profile";
-import { Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 function App() {
-  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   console.log("token is ", token);
   const [auth, setAuth] = useState(false);
@@ -40,7 +39,7 @@ function App() {
             }
           />
         ) : (
-          navigate("/login")
+          <Route path="/*" element={<Navigate to="/login" />} />
         )}
       </Routes>
     </>

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import MainContent from "./MainContent";
-import "./container.scss";
+import "./Container.scss";
 import Rightbar from "./RightSidebar";
 import Timeline from "../pages/Timeline";
 import Friends from "../pages/Friends";
@@ -16,9 +16,7 @@ import Videos from "../pages/Videos.jsx";
 import Event from "../pages/Event.jsx";
 
 export const notifContext = createContext();
-const Container = () =>
-{
-  
+const Container = () => {
   const [notificationClicked, setNotificationClicked] = useState(false);
   return (
     <notifContext.Provider
