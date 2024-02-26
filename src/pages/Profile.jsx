@@ -5,43 +5,43 @@ import NewPost from "../components/NewPost";
 import Post from "../features/Post";
 import Gallery from "../features/Gallery";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const Main = () => {
-  const token = localStorage.getItem("token");
-  console.log("token is ", token);
-  const [auth, setAuth] = useState(false);
+  // const token = localStorage.getItem("token");
+  // console.log("token is ", token);
+  // const [auth, setAuth] = useState(false);
 
-  useEffect(() => {
-    if (token != null) {
-      setAuth(true);
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token != null) {
+  //     setAuth(true);
+  //   }
+  // }, [token]);
 
-  console.log(auth);
+  // console.log(auth);
   return (
     <>
-      {!auth ? (
+      {/* {!auth ? (
         <>Not Authirzed</>
-      ) : (
-        <div className="main">
-          <div className="profile-info">
-            <CompleteProfile />
-            <Intro />
-            <div className="buttons">
-              <h4>Photos</h4>
-              <p>See all</p>
-            </div>
-            <div className="photo-wrapper">
-              <Gallery />
-            </div>
+      ) : ( */}
+      <div className="main">
+        <div className="profile-info">
+          <CompleteProfile />
+          <Intro />
+          <div className="buttons">
+            <h4>Photos</h4>
+            <p>See all</p>
           </div>
-          <div className="timeline">
-            <NewPost />
-            <Post />
+          <div className="photo-wrapper">
+            <Gallery />
           </div>
         </div>
-      )}
+        <div className="timeline">
+          <NewPost />
+          <Post />
+        </div>
+      </div>
+      {/* )} */}
     </>
   );
 };
