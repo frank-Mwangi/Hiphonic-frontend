@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin-left: 10px;
+  font-size: 14px;
   .title {
     display: flex;
     flex-direction: row;
@@ -21,7 +22,6 @@
     }
   }
   .shortcut {
-    // border: 2px solid red;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,6 +30,7 @@
     color: black;
     font-weight: bold;
     font-size: 10px;
+   
     img {
       height: 30px;
     }

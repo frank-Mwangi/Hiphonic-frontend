@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./header.scss";
 
 const Header = () => {
@@ -16,7 +16,16 @@ const Header = () => {
         </button>
       </div>
 
-      {isOpen && <form>Form</form>}
+      {isOpen && (
+        <div className="form-container">
+          <form action="">
+            <input type="text" name="Company" placeholder="Company" />
+            <input type="text" name="Date" placeholder="Date" />
+            <input type="text" name="Website" placeholder="Website" />
+            <button>Save</button>
+          </form>
+        </div>
+      )}
     </>
   );
 };

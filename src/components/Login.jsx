@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./Login.scss";
+import { fetchUser } from "../features/users/usersSlice";
 
 const Login = () => {
-    // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
     const schema = yup.object().shape({
-        username: yup.string().required("Username is required"),
-        password: yup.string().required("Password is required"),
+        Email: yup.string().required("Username is required"),
+        Password: yup.string().required("Password is required"),
     });
 
     const {
@@ -19,44 +22,47 @@ const Login = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
-        console.log(data);
-        const users = localStorage.getItem("users");
-        const userList = JSON.parse(users);
-        const user = userList.find((item) => data.username == item.username);
-        if (user && data.password == user.password) {
-            // navigate("/home");
-        } else {
-            alert("Authentication failed! Please enter correct username/password");
+    const onSubmit = async (data) => {
+   
+    const { payload } = await dispatch(fetchUser(data));
+    const { token } = payload;
+    console.log("token is ",token);
+        if ( token )
+        {
+            localStorage.setItem("token", token);
+      navigate("/home");
         }
+        // else
+        // {
+        //     navigate("/login"); 
+        // }
     };
 
     return (
-        <>
-            <div className="logincontainer">
-                <form action="" className="login" onSubmit={handleSubmit(onSubmit)}>
-                    <h1>Login...</h1>
-                    <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        placeholder="Enter your username..."
-                        {...register("username")}
-                    />
-                    <p>{errors.username?.message}</p>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Enter your password..."
-                        {...register("password")}
-                    />
-                    <p>{errors.password?.message}</p>
-                    <input type="submit" value="Login" className="submit" />
-                </form>
-            </div>
-
-        </>
+      <>
+        <div className="logincontainer">
+          <form action="" className="login" onSubmit={handleSubmit(onSubmit)}>
+            <h1>Login...</h1>
+            <input
+              type="text"
+              name="Email"
+              id="Email"
+              placeholder="Enter your Email..."
+              {...register("Email")}
+            />
+            <p>{errors.Email?.message}</p>
+            <input
+              type="password"
+              name="Password"
+              id="Password"
+              placeholder="Enter your Password..."
+              {...register("Password")}
+            />
+            <p>{errors.Password?.message}</p>
+            <input type="submit" value="Login" className="submit" />
+          </form>
+        </div>
+      </>
     );
 };
 
