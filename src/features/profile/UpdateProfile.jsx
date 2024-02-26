@@ -5,7 +5,8 @@ import "./updateProfile.scss";
 const UpdateProfile = ({ onClose, user }) => {
   // console.log(user);
   const [updateUser, { isLoading }] = useUpdateUserMutation();
-
+  const token = localStorage.getItem("token");
+  console.log(token);
   const [editedProfile, setEditedProfile] = useState({
     ...user,
   });
@@ -23,9 +24,17 @@ const UpdateProfile = ({ onClose, user }) => {
     //   alert("Please fill in all fields");
     // } else {
     console.log("Edited Profile: ", editedProfile);
-    updateUser({
-      ...editedProfile,
-    });
+    updateUser(
+      {
+        ...editedProfile,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `JWT ${token}`,
+        },
+      }
+    );
     e.target.reset();
     // }
   };
