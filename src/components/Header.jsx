@@ -16,25 +16,15 @@ const Header = () => {
   return (
     <>
       <div className="header">
-        <button onClick={() => setIsOpen(true)} className="edit">
+        <button onClick={() => setIsOpen(!isOpen)} className="edit">
           Edit Profile
         </button>
         {isOpen &&
           createPortal(
-            <UpdateProfile onClose={() => setIsOpen(false)} />,
+            <UpdateProfile user={user} onClose={() => setIsOpen(false)} />,
             document.body
           )}
       </div>
-
-      {/* {
-        isOpen && (
-          // createPortal(
-          <UpdateProfile user={user} onClose={() => setIsOpen(false)} />
-        )
-        // ,
-        // document.getElementById("modal-root")
-        // )
-      } */}
     </>
   );
 };
