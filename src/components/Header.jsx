@@ -1,31 +1,40 @@
 import { useState } from "react";
 import "./header.scss";
+import UpdateProfile from "../features/profile/UpdateProfile";
+import { createPortal } from "react-dom";
 
 const Header = () => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleForm = () => {
-    setOpen(!isOpen);
-  };
+  const user = JSON.parse(localStorage.getItem("userDetails"));
+
+  // const toggleForm = () => {
+  //   setIsOpen(!isOpen);
+  //   console.log("Button clicked");
+  // };
 
   return (
     <>
       <div className="header">
-        <button onClick={toggleForm} className="edit">
+        <button onClick={() => setIsOpen(true)} className="edit">
           Edit Profile
         </button>
+        {isOpen &&
+          createPortal(
+            <UpdateProfile onClose={() => setIsOpen(false)} />,
+            document.body
+          )}
       </div>
 
-      {isOpen && (
-        <div className="form-container">
-          <form action="">
-            <input type="text" name="Company" placeholder="Company" />
-            <input type="text" name="Date" placeholder="Date" />
-            <input type="text" name="Website" placeholder="Website" />
-            <button>Save</button>
-          </form>
-        </div>
-      )}
+      {/* {
+        isOpen && (
+          // createPortal(
+          <UpdateProfile user={user} onClose={() => setIsOpen(false)} />
+        )
+        // ,
+        // document.getElementById("modal-root")
+        // )
+      } */}
     </>
   );
 };

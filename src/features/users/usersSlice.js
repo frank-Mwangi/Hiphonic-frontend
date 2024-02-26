@@ -11,24 +11,23 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   } catch (error) {
     return error.message;
   }
-} );
+});
 
-export const fetchUser = createAsyncThunk("users/fetcUser", async (user) => {
+export const fetchUser = createAsyncThunk("users/fetchUser", async (user) => {
   try {
     const response = await axios.post(`${USERS_URL}/login`, user);
     return response.data;
   } catch (error) {
     return error.message;
   }
-} );
-
+});
 
 export const addUser = createAsyncThunk("users/addUser", async (user) => {
   try {
     console.log("User is ", user);
     const response = await axios.post(USERS_URL, user);
-        
-      return response.data;
+
+    return response.data;
   } catch (error) {
     return error.message;
   }

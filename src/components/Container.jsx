@@ -1,13 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import MainContent from "./MainContent";
-import "./Container.scss";
+import "./container.scss";
 import Rightbar from "./RightSidebar";
 import Timeline from "../pages/Timeline";
 import Friends from "../pages/Friends";
 import Navbar from "./Navbar";
-
-import Login from "./Login";
+// import Login from "./Login";
 import { useState, createContext } from "react";
 import Notifications from "../pages/Notifications";
 import Photos from "../pages/Photos";
@@ -29,7 +28,7 @@ const Container = () => {
 
           <Routes>
             <Route path="/notifications" element={<Notifications />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/home/" element={<MainContent />} />
             <Route path="/timeline" element={<Timeline />} />
             <Route path="/friends" element={<Friends />} />

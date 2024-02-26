@@ -9,61 +9,63 @@ import { fetchUser } from "../features/users/usersSlice";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-    const schema = yup.object().shape({
-        Email: yup.string().required("Username is required"),
-        Password: yup.string().required("Password is required"),
-    });
+  const schema = yup.object().shape({
+    Email: yup.string().required("Username is required"),
+    Password: yup.string().required("Password is required"),
+  });
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
-        resolver: yupResolver(schema),
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    const onSubmit = async (data) => {
-   
+  const onSubmit = async (data) => {
     const { payload } = await dispatch(fetchUser(data));
-    const { token } = payload;
-    console.log("token is ",token);
-        if ( token )
-        {
-            localStorage.setItem("token", token);
-      navigate("/home");
-        }
-        // else
-        // {
-        //     navigate("/login"); 
-        // }
-    };
+    const { token, userDetails } = payload;
+    console.log("token is ", token);
+    console.log("Payload nayo ni: ", userDetails);
 
-    return (
-      <>
-        <div className="logincontainer">
-          <form action="" className="login" onSubmit={handleSubmit(onSubmit)}>
-            <h1>Login...</h1>
-            <input
-              type="text"
-              name="Email"
-              id="Email"
-              placeholder="Enter your Email..."
-              {...register("Email")}
-            />
-            <p>{errors.Email?.message}</p>
-            <input
-              type="password"
-              name="Password"
-              id="Password"
-              placeholder="Enter your Password..."
-              {...register("Password")}
-            />
-            <p>{errors.Password?.message}</p>
-            <input type="submit" value="Login" className="submit" />
-          </form>
-        </div>
-      </>
-    );
+    if (token) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+
+      navigate("/home");
+    }
+    // else
+    // {
+    //     navigate("/login");
+    // }
+  };
+
+  return (
+    <>
+      <div className="logincontainer">
+        <form action="" className="login" onSubmit={handleSubmit(onSubmit)}>
+          <h1>Login...</h1>
+          <input
+            type="text"
+            name="Email"
+            id="Email"
+            placeholder="Enter your Email..."
+            {...register("Email")}
+          />
+          <p>{errors.Email?.message}</p>
+          <input
+            type="password"
+            name="Password"
+            id="Password"
+            placeholder="Enter your Password..."
+            {...register("Password")}
+          />
+          <p>{errors.Password?.message}</p>
+          <input type="submit" value="Login" className="submit" />
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default Login;
