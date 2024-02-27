@@ -1,12 +1,13 @@
-
 import "./bio.scss";
 
 const Bio = () => {
+  const user = JSON.parse(localStorage.getItem("userDetails"));
+  console.log(user);
   return (
     <div className="bio">
       <div className="handle">
-        <h2>Kaiser Soze</h2>
-        <p>@K.soze</p>
+        <h2>{user.Username}</h2>
+        <p>{user.TagName}</p>
       </div>
       <div className="biodeets">
         <div className="bio-info">
