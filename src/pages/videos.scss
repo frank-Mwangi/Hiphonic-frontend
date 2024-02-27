@@ -1,10 +1,18 @@
 .videos-page {
+  // display: flex;
+  // flex-direction: column;
+  // flex: 4.8;
+  // max-width: 75vw;
+  // margin: 20px;
+  // overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  flex: 4.8;
-  max-width: 75vw;
-  margin: 20px;
-  overflow-y: scroll;
+  flex: 5.7;
+  //border: 2px solid green;
+  margin-left: 15%;
+  margin-right: 15%;
+  //overflow-y: scroll;
+  //background-color: #e3eefa;
 
   .top {
     background-color: #fff;

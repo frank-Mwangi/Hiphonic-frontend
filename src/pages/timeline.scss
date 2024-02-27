@@ -1,13 +1,21 @@
 .timeline {
+  // display: flex;
+  // flex: 5.7;
+  // flex-direction: column;
+  // //border: 2px solid red;
+  // margin: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
+  // gap: 10px;
+  // overflow-y: scroll;
   display: flex;
-  flex: 5.7;
   flex-direction: column;
-  //border: 2px solid red;
-  margin: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  gap: 10px;
-  overflow-y: scroll;
+  flex: 5.7;
+  //border: 2px solid green;
+  margin-left: 15%;
+  margin-right: 15%;
+  //overflow-y: scroll;
+  //background-color: #e3eefa;
   .stories-wrap {
     display: flex;
     flex-direction: column;
