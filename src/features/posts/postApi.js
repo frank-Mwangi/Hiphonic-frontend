@@ -6,9 +6,7 @@ export const postsApi = createApi({
   tagTypes: ["Posts"],
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => ({
-        url: "posts",
-      }),
+      query: () => "posts/all",
       providesTags: ["Posts"],
     }),
     addPost: builder.mutation({
@@ -43,3 +41,6 @@ export const {
   useUpdatePostMutation,
   useDeletePostMutation,
 } = postsApi;
+
+export const useGetPostsQueryWithoutCache = () =>
+  useGetPostsQuery({ refetchOnMountOrArgChange: true, cacheTime: 0 });

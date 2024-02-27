@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import MainContent from "./MainContent";
-import "./container.scss";
+import "./Container.scss";
 import Rightbar from "./RightSidebar";
 import Timeline from "../pages/Timeline";
 import Friends from "../pages/Friends";
