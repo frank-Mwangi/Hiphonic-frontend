@@ -24,17 +24,21 @@ const UpdateProfile = ({ onClose, user }) => {
     //   alert("Please fill in all fields");
     // } else {
     console.log("Edited Profile: ", editedProfile);
+    console.log("token is ", token);
     updateUser(
       {
         ...editedProfile,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `JWT ${token}`,
-        },
+        token,
       }
+
+      // {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     authorization: `JWT ${token}`,
+      //   },
+      // }
     );
+    localStorage.setItem("userDetails", editedProfile);
     e.target.reset();
     // }
   };
