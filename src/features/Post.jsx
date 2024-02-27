@@ -1,4 +1,4 @@
-import React from "react";
+
 import avi from "../assets/Avatar.png";
 import photo1 from "../assets/photo2.png";
 import photo2 from "../assets/photo1.png";
