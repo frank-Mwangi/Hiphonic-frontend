@@ -46,14 +46,15 @@ const Sidebar = () => {
       link: "/events",
     },
   ];
+  const user = JSON.parse( localStorage.getItem( "userDetails" ) );
   return (
     <div className="sidebar">
       <div className="avatar">
         <img src={avi} alt="no=avi" />
         <NavLink to="/home" style={{ textDecoration: "none" }}>
           <div className="details">
-            <h4>Kaizer Soze</h4>
-            <p>@K.soze</p>
+            <h4>{user.Username}</h4>
+            <p>{user.TagName}</p>
           </div>
         </NavLink>
       </div>
