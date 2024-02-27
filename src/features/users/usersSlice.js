@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const USERS_URL = "http://localhost:5400/api/users";
-
+const token = localStorage.getItem("token");
 const initialState = { users: [], status: "idle", error: null }; // 'idle' | 'loading' | 'succeeded' | 'failed'
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   try {
@@ -45,10 +45,17 @@ export const deleteUser = createAsyncThunk(
   }
 );
 
-export const updateUser = createAsyncThunk("users/updatePost", async (user) => {
-  try {
-    const response = await axios.put(`${USERS_URL}/${user.id}`, user);
-    return response.data;
+export const updateUser = createAsyncThunk("users/updateUsers", async (user) => {
+  try
+  {
+    console.log("user is ",user);
+    if (token) {
+      const response = await axios.put(`${USERS_URL}/${user.id}`, user);
+      return response.data;
+    } else {
+      alert("Unauthorzied request");
+      return null;
+    }
   } catch (error) {
     return error.message;
   }

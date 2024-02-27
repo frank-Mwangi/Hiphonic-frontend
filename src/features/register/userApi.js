@@ -34,6 +34,10 @@ export const userApi = createApi({
         url: `users/update/${user.UserID}`,
         method: "PUT",
         body: user,
+        headers: {
+          authorization: `JWT ${user.token}`,
+          "Content-Type": "application/json",
+        },
       }),
       invalidatesTags: ["Users"],
     }),
