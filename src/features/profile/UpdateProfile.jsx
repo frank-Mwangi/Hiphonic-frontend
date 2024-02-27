@@ -38,8 +38,10 @@ const UpdateProfile = ({ onClose, user }) => {
       //   },
       // }
     );
-    localStorage.setItem("userDetails", editedProfile);
+    localStorage.setItem("userDetails", JSON.stringify(editedProfile));
     e.target.reset();
+    alert("Edit successful. Please log in again to see the changes.");
+    onClose();
     // }
   };
   return (
