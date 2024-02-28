@@ -16,16 +16,59 @@ const Post = ({ post }) => {
   const [comments, setComments] = useState(0);
   const [shares, setShares] = useState(0);
 
+  const user = JSON.parse(localStorage.getItem("userDetails"));
+
   return (
     <div>
       {/* {isError && <div>Error: {error.data.message}</div>}
       {isLoading ||
         (isFetching && <ClipLoader color="#000" loading={true} size={150} />)} */}
       {/* <h2>Posts</h2> */}
-      <section className="post">
-        {console.log(post)}
-        {<div key={post.index}>{post.Content}</div>}
-      </section>
+      {
+        <section className="post" key={post.index}>
+          <div className="handle">
+            <img src={avi} alt="no-avi" />
+            <div className="name">
+              <h4>{post.Username[0]}</h4>
+              <h5>{post.TagName[0]}</h5>
+              <p>56 mins ago</p>
+            </div>
+          </div>
+          <div className="textContent">
+            <p>{post.Content}</p>
+          </div>
+          {/* <div className="images">
+            <img className="img1" src={photo1} alt="no-pic" />
+            <img src={photo2} alt="no-pic" />
+          </div> */}
+          <div className="impressions">
+            <div className="impression" onClick={() => setLikes(likes + 1)}>
+              <img src={heart} alt="like-icon" />
+              <p>
+                {likes}
+                <span> Likes</span>
+              </p>
+            </div>
+            <div
+              className="impression"
+              onClick={() => setComments(comments + 1)}
+            >
+              <img src={comment} alt="comment-icon" />
+              <p>
+                {comments}
+                <span> Comments</span>
+              </p>
+            </div>
+            <div className="impression" onClick={() => setShares(shares + 1)}>
+              <img src={share} alt="share-icon" />
+              <p>
+                {shares}
+                <span> Share</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      }
     </div>
     // <div className="post">
     //   <div className="handle">
@@ -41,10 +84,10 @@ const Post = ({ post }) => {
     //       of my friends, happy for that!
     //     </p>
     //   </div>
-    //   <div className="images">
-    //     <img className="img1" src={photo1} alt="no-pic" />
-    //     <img src={photo2} alt="no-pic" />
-    //   </div>
+    // <div className="images">
+    //   <img className="img1" src={photo1} alt="no-pic" />
+    //   <img src={photo2} alt="no-pic" />
+    // </div>
     //   <div className="impressions">
     //     <div className="impression">
     //       <img src={heart} alt="like-icon" />

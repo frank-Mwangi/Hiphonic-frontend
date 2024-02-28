@@ -26,9 +26,7 @@ const PostLists = () => {
   }
   return (
     <div className="postsList">
-      <h2>Posts here</h2>
       <section className="posts-container">
-        {console.log(posts)}
         {posts && posts.map((post, index) => <Post key={index} post={post} />)}
       </section>
     </div>

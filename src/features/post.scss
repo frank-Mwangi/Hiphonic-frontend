@@ -5,6 +5,7 @@
   background-color: #fff;
   padding-right: 10px;
   margin-top: 20px;
+  //border: 2px solid salmon;
   .handle {
     display: flex;
     align-items: center;
@@ -20,12 +21,18 @@
       h4 {
         font-size: 12px;
         position: relative;
-        bottom: -10px;
+        bottom: -30px;
+      }
+      h5 {
+        font-size: 11px;
+        position: relative;
+        top: -3px;
+        font-weight: 200;
       }
       p {
         font-size: 12px;
         position: relative;
-        top: -15px;
+        top: -30px;
         color: gray;
       }
     }
