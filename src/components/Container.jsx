@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import MainContent from "./MainContent";
-import "./Container.scss";
+import "./container.scss";
 import Rightbar from "./RightSidebar";
 import Timeline from "../pages/Timeline";
-import Friends from "../pages/Friends";
+//import Friends from "../pages/Friends";
 import Navbar from "./Navbar";
 // import Login from "./Login";
 import { useState, createContext } from "react";
@@ -13,6 +13,7 @@ import Photos from "../pages/Photos";
 import GroupsTop from "../pages/GroupsTop.jsx";
 import Videos from "../pages/Videos.jsx";
 import Event from "../pages/Event.jsx";
+import FriendsList from "../features/friends/FriendsLists.jsx";
 
 export const notifContext = createContext();
 const Container = () => {
@@ -31,7 +32,7 @@ const Container = () => {
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/home/" element={<MainContent />} />
             <Route path="/timeline" element={<Timeline />} />
-            <Route path="/friends" element={<Friends />} />
+            <Route path="/friends" element={<FriendsList />} />
             <Route path="/groups" element={<GroupsTop />} />
             <Route path="/events" element={<Event />} />
             <Route path="/videos" element={<Videos />} />
