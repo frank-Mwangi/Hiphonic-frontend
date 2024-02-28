@@ -1,4 +1,3 @@
-
 import avatar0 from "../assets/Avatar.png";
 import avatar1 from "../assets/Avatar (1).png";
 import avatar2 from "../assets/Avatar (2).png";
@@ -8,8 +7,9 @@ import avatar5 from "../assets/Avatar (6).png";
 import avatar6 from "../assets/Avatar (7).png";
 import avatar7 from "../assets/Avatar (8).png";
 import NewPost from "../components/NewPost";
-import Post from "../features/Post";
+//import Post from "../features/Post";
 import "./timeline.scss";
+import PostLists from "../features/posts/PostLists";
 
 const Timeline = () => {
   const stories = [
@@ -50,6 +50,7 @@ const Timeline = () => {
       icon: avatar3,
     },
   ];
+
   return (
     <div className="timeline">
       <div className="stories-wrap">
@@ -67,7 +68,7 @@ const Timeline = () => {
         </div>
       </div>
       <NewPost />
-      <Post />
+      <PostLists />
     </div>
   );
 };

@@ -9,10 +9,10 @@
   font-weight: bold;
   gap: 10px;
   padding: 10px;
-  .input {
+  progress {
     display: flex;
     gap: 10px;
-    color: gray;
+    color: rgb(63, 42, 247);
     font-weight: bold;
   }
   @media screen and (max-width: 425px) {

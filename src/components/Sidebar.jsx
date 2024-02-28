@@ -13,7 +13,7 @@ import mobileIcon from "../assets/mobiledesign.png";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({closeSidebar}) => {
   const menu = [
     {
       icon: timelineIcon,
@@ -49,6 +49,7 @@ const Sidebar = () => {
   const user = JSON.parse( localStorage.getItem( "userDetails" ) );
   return (
     <div className="sidebar">
+      <div className="closingbtn" onClick={closeSidebar}>X</div>
       <div className="avatar">
         <img src={avi} alt="no=avi" />
         <NavLink to="/home" style={{ textDecoration: "none" }}>

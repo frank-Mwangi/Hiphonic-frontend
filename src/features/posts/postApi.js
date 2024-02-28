@@ -6,9 +6,11 @@ export const postsApi = createApi({
   tagTypes: ["Posts"],
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => ({
-        url: "posts",
-      }),
+      query: () => "posts/all",
+      providesTags: ["Posts"],
+    }),
+    getPostsByUser: builder.query({
+      query: (UserID) => `posts/user/${UserID}`,
       providesTags: ["Posts"],
     }),
     addPost: builder.mutation({
@@ -39,7 +41,11 @@ export const postsApi = createApi({
 
 export const {
   useGetPostsQuery,
+  useGetPostsByUserQuery,
   useAddPostMutation,
   useUpdatePostMutation,
   useDeletePostMutation,
 } = postsApi;
+
+export const useGetPostsQueryWithoutCache = () =>
+  useGetPostsQuery({ refetchOnMountOrArgChange: true, cacheTime: 0 });

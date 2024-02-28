@@ -1,10 +1,13 @@
 .maincontent {
   display: flex;
   flex-direction: column;
-  flex: 5.7;
+  // flex: 5.7;
   //border: 2px solid green;
   margin-left: 15%;
   margin-right: 15%;
   //overflow-y: scroll;
-  //background-color: #e3eefa;
+  background-color: #e3eefa;
+  height: 90hv;
+  overflow: scroll;
+  scroll-behavior: smooth;
 }

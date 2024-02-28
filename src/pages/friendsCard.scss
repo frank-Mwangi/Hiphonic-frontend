@@ -1,25 +1,9 @@
-.friends {
-  // display: grid;
-  // grid-template-columns: repeat(2, 1fr);
-  // flex: 5.7;
-  // overflow-y: scroll;
-  // //border: 2px solid salmon;
-  // margin: 20px;
-  // background-color: #fff;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 5.7;
-  //border: 2px solid green;
-  margin-left: 15%;
-  margin-right: 15%;
-  //overflow-y: scroll;
-  //background-color: #e3eefa;
+
 
   .friend {
+     background-color: rgb(218, 187, 187);
     margin: 20px;
     padding: 20px;
-    background-color: #dcebfa;
     display: flex;
     width: 23.5rem;
     flex-direction: column;
@@ -72,12 +56,15 @@
     }
   }
   @media screen and (max-width: 768px) {
-    display: flex;
+    .friend{
+       display: flex;
     flex-direction: column;
+    }
+   
   }
   @media screen and (max-width: 425px) {
     .friend {
       width: auto;
     }
   }
-}
+

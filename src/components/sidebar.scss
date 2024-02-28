@@ -9,6 +9,9 @@
   height: 100vh;
   padding: 0 !important;
   flex: 1;
+  .closingbtn{
+    display: none;
+  }
   .avatar {
     display: flex;
     flex-direction: row;
@@ -136,4 +139,15 @@
       }
     }
   }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar on smaller screens */
+    .closingbtn{
+      display: inline;
+    }
+  }
+
+  
 }

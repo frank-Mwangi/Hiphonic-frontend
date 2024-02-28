@@ -13,6 +13,7 @@ import chevron from "../assets/chevron-down.png";
 //import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Notifications from "../pages/Notifications";
+import Sidebar from "./Sidebar";
 //import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -22,13 +23,23 @@ const Navbar = () => {
     setShowNotification(!showNotification);
   };
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const togglesidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  }
+
   return (
     <div className="navbar">
       <div className="logo">
-        <img src={menu} alt="no menu" />
+        <img className="menu1" src={menu} alt="no menu" />
+        <img onClick={togglesidebar}  id="showMenu" className="menu" src={menu} alt="no menu" />
         <img src={logo} alt="no logo" />
-        <h1>Hiphonic</h1>
+        <h1>Hiphonic</h1>      
+
       </div>
+
+      {isSidebarOpen && <Sidebar closeSidebar={togglesidebar}/>}
 
       <div className="navbody">
         <div>
