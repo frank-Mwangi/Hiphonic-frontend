@@ -10,7 +10,6 @@ export const store = configureStore({
     users: usersReducer,
     [userApi.reducerPath]: userApi.reducer,
     [postsApi.reducerPath]: postsApi.reducer,
-    [friendsApi.reducerPath]: friendsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
