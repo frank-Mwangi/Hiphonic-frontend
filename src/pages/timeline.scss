@@ -26,11 +26,17 @@
       align-items: center;
     }
   }
-  .posts-container {
+  .postLists {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
-    height: 400px;
+    width: 100%;
+
+    .posts-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      border: 2px solid black;
+    }
   }
   @media screen and (max-width: 425px) {
     .newpost {

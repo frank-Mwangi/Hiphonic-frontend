@@ -24,8 +24,7 @@ const Post = ({ post }) => {
       {/* <h2>Posts</h2> */}
       <section className="post">
         {console.log(post)}
-        {/* {
-        posts && posts.map((post, index) => <div key={index}>{post}</div>)} */}
+        {<div key={post.index}>{post.Content}</div>}
       </section>
     </div>
     // <div className="post">

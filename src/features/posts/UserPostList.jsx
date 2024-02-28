@@ -1,23 +1,18 @@
+import React from "react";
+import { useGetPostsByUserQuery } from "./postApi";
 import ClipLoader from "react-spinners/ClipLoader";
-import Post from "../Post";
-import { useGetPostsQuery } from "./postApi";
-import "./postLists.scss";
 
-const PostLists = () => {
+const UserPostList = () => {
   const {
     data: posts,
     error,
     isLoading,
     isError,
     isFetching,
-  } = useGetPostsQuery({ refetchOnReconnect: true });
-
-  // const response = useGetPostsQuery();
-  console.log("Response ni: ", posts);
+  } = useGetPostsByUserQuery({ refetchOnReconnect: true });
   console.log(
     `Posts: ${posts}, Error: ${error}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
   );
-
   if (isLoading || isFetching) {
     return <ClipLoader color="#000" loading={true} size={150} />;
   }
@@ -35,4 +30,4 @@ const PostLists = () => {
   );
 };
 
-export default PostLists;
+export default UserPostList;

@@ -4,6 +4,7 @@ import Intro from "../features/Intro";
 import NewPost from "../components/NewPost";
 import Post from "../features/Post";
 import Gallery from "../features/Gallery";
+import UserPostList from "../features/posts/UserPostList";
 
 // import { useEffect, useState } from "react";
 
@@ -38,7 +39,7 @@ const Main = () => {
         </div>
         <div className="timeline">
           <NewPost />
-          <Post />
+          <UserPostList />
         </div>
       </div>
       {/* )} */}
