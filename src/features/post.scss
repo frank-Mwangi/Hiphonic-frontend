@@ -20,12 +20,12 @@
       h4 {
         font-size: 12px;
         position: relative;
-        bottom: -10px;
+        // bottom: -10px;
       }
       p {
         font-size: 12px;
         position: relative;
-        top: -15px;
+        // top: -15px;
         color: gray;
       }
     }
@@ -33,17 +33,19 @@
   }
   .textContent {
     position: relative;
-    top: -20px;
+    top: -5px;
     padding-left: 10px;
   }
   .images {
     //border: 2px solid black;
     position: relative;
-    top: -30px;
+    top: 0px;
     display: flex;
     justify-content: space-around;
     img {
-      width: 30%;
+      width: 40%;
+      height: 100%;
+      margin-bottom: 5px;
     }
   }
   .impressions {
