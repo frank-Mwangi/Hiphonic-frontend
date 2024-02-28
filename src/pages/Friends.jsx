@@ -1,3 +1,83 @@
+import { useState } from "react";
+import { useGetFriendsQuery } from "../features/friends/friendsApi";
+import verticalDots from "../assets/vertical-dots.png";
+const Friends = () => {
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [displayedData, setDisplayedData] = useState([]); // State to store displayed friends or suggested friends
+
+    const handleClick = (e) => {
+      e.preventDefault();
+
+      setShowDropDown(!showDropDown);
+    };
+
+    const handleRemoveFriend = () => {
+      console.log("Friend removed");
+      setShowDropDown(false);
+    };
+  
+  const {
+    data: friendsData,
+    isLoading,
+    isError,
+  } = useGetFriendsQuery({
+    User1ID: "your_user_id", // Pass the user ID to fetch friends
+  });
+
+  // Handle displaying friends
+  const handleFriends = () => {
+    setDisplayedData(friendsData);
+  };
+
+  // Handle displaying suggested friends
+  const handleSuggestions = () => {
+    // Logic to fetch and set suggested friends data
+    setDisplayedData([]); // Clear displayed data for now
+  };
+
+  return (
+    <div className="friends">
+      <div>
+        <button onClick={handleFriends}>Your Friends</button>
+        <button onClick={handleSuggestions}>Suggested Friends</button>
+      </div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : isError ? (
+        <div>Error fetching data</div>
+      ) : (
+        displayedData.map((friend, index) => (
+          <div className="friend" key={index}>
+            {/* Render friend data */}
+            <div className="top">
+              <div className="img">
+                <img src={friend.dp} alt="no-dp" />
+              </div>
+              <div className="details">
+                <h4>{friend.name}</h4>
+                <p>@{friend.handle}</p>
+              </div>
+              <div className="dots">
+                <img onClick={handleClick} src={verticalDots} alt="" />
+                {showDropDown && (
+                  <div className="dropdown">
+                    <button onClick={handleRemoveFriend}>Remove Friend</button>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="bottom">
+              <button>Message</button>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default Friends;
+
 // import avi from "../assets/Avatar.png";
 // import avi1 from "../assets/Avatar (1).png";
 // import avi2 from "../assets/Avatar (2).png";
