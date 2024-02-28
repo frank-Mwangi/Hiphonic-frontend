@@ -29,8 +29,8 @@ const Post = ({ post }) => {
           <div className="handle">
             <img src={avi} alt="no-avi" />
             <div className="name">
-              <h4>{post.Username[0]}</h4>
-              <h5>{post.TagName[0]}</h5>
+              <h4>{post.Username}</h4>
+              <h5>{post.TagName}</h5>
               <p>56 mins ago</p>
             </div>
           </div>
