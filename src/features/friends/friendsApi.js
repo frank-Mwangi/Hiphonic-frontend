@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const friendApi = createApi({
+export const friendsApi = createApi({
   reducerPath: "friendApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5400/api/" }),
   tagTypes: ["friendships"],
   endpoints: (builder) => ({
     getFriends: builder.query({
-      query: (friendship) => `friendships/user/${friendship.User1ID}`,
+      query: (UserID) => `friendship/friends/${UserID}`,
       providesTags: ["friendships"],
     }),
     addFriendship: builder.mutation({
@@ -32,4 +32,4 @@ export const {
   useGetFriendsQuery,
   useAddFriendshipMutation,
   useDeleteFriendshipMutation,
-} = friendApi;
+} = friendsApi;
