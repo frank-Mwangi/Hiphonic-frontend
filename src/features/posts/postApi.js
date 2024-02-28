@@ -10,7 +10,7 @@ export const postsApi = createApi({
       providesTags: ["Posts"],
     }),
     getPostsByUser: builder.query({
-      query: () => "/user/:UserID",
+      query: (UserID) => `posts/user/${UserID}`,
       providesTags: ["Posts"],
     }),
     addPost: builder.mutation({

@@ -1,18 +1,23 @@
 import React from "react";
 import { useGetPostsByUserQuery } from "./postApi";
+import Post from "../Post";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const UserPostList = () => {
+  const user = JSON.parse(localStorage.getItem("userDetails"));
+
+  const UserID = user.UserID;
   const {
     data: posts,
     error,
     isLoading,
     isError,
     isFetching,
-  } = useGetPostsByUserQuery({ refetchOnReconnect: true });
+  } = useGetPostsByUserQuery(UserID);
   console.log(
     `Posts: ${posts}, Error: ${error}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
   );
+
   if (isLoading || isFetching) {
     return <ClipLoader color="#000" loading={true} size={150} />;
   }
@@ -21,9 +26,7 @@ const UserPostList = () => {
   }
   return (
     <div className="postsList">
-      <h2>Posts here</h2>
       <section className="posts-container">
-        {console.log(posts)}
         {posts && posts.map((post, index) => <Post key={index} post={post} />)}
       </section>
     </div>

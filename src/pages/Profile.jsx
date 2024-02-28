@@ -2,7 +2,7 @@ import "./profile.scss";
 import CompleteProfile from "../components/CompleteProfile";
 import Intro from "../features/Intro";
 import NewPost from "../components/NewPost";
-import Post from "../features/Post";
+//import Post from "../features/Post";
 import Gallery from "../features/Gallery";
 import UserPostList from "../features/posts/UserPostList";
 
