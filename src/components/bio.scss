@@ -4,8 +4,8 @@
   //padding: 10px;
   margin-left: 10px;
   height: 30%;
-  position: relative;
-  top: -40px;
+  // position: relative;
+  margin-top: -10px;
 
   .handle {
     flex: 1.5;
@@ -17,11 +17,12 @@
     padding-top: 10px;
     h2 {
       font-size: 20px;
+      margin-top: -30px;
     }
     p {
       font-size: 15px;
-      position: relative;
-      top: -30px;
+      // position: relative;
+      // top: -30px;
       color: gray;
     }
   }
@@ -31,11 +32,12 @@
     border-radius: 10px;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: -60px;
     //border: 2px solid blue;
 
     flex: 5;
     .bio-info {
-      margin: 10px;
+      // margin: 10px;
       padding-top: 20px;
       display: flex;
       flex-direction: column;
@@ -48,12 +50,13 @@
         font-size: 14px;
         font-weight: bold;
         color: gray;
+        // top: -25px;
       }
       p {
         font-weight: bold;
         font-size: 12px;
-        position: relative;
-        top: -25px;
+        // position: relative;
+        // top: -25px;
       }
     }
     .likes {

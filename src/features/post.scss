@@ -21,13 +21,7 @@
       h4 {
         font-size: 12px;
         position: relative;
-        bottom: -30px;
-      }
-      h5 {
-        font-size: 11px;
-        position: relative;
-        top: -3px;
-        font-weight: 200;
+        // bottom: -10px;
       }
       p {
         font-size: 12px;
@@ -40,17 +34,19 @@
   }
   .textContent {
     position: relative;
-    top: -20px;
+    top: -5px;
     padding-left: 10px;
   }
   .images {
     //border: 2px solid black;
     position: relative;
-    top: -30px;
+    top: 0px;
     display: flex;
     justify-content: space-around;
     img {
-      width: 30%;
+      width: 40%;
+      height: 100%;
+      margin-bottom: 5px;
     }
   }
   .impressions {

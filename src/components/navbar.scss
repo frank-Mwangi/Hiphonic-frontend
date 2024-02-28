@@ -19,6 +19,9 @@
     flex: 1;
     font-size: 12px;
     gap: 10px;
+    .menu{
+      display: none;
+    }
     img {
       height: 22px;
       width: 22px;
@@ -58,4 +61,13 @@
       //border-radius: 50%;
     }
   }
+  @media screen and (max-width: 768px) {
+    #showMenu{
+      display: block;
+    }
+    .menu1{
+      display: none;
+    }
+    
 
+  }
