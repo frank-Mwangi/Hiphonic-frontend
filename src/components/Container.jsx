@@ -13,7 +13,7 @@ import Photos from "../pages/Photos";
 import GroupsTop from "../pages/GroupsTop.jsx";
 import Videos from "../pages/Videos.jsx";
 import Event from "../pages/Event.jsx";
-import FriendsList from "../features/friends/friendsLists.jsx";
+import FriendsList from "../features/friends/FriendsLists.jsx";
 
 export const notifContext = createContext();
 const Container = () => {

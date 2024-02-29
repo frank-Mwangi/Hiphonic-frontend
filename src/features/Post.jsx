@@ -1,12 +1,12 @@
-import ClipLoader from "react-spinners/ClipLoader";
+// import ClipLoader from "react-spinners/ClipLoader";
 import avi from "../assets/Avatar.png";
-import photo1 from "../assets/photo2.png";
-import photo2 from "../assets/photo1.png";
+// import photo1 from "../assets/photo2.png";
+// import photo2 from "../assets/photo1.png";
 import heart from "../assets/heart.png";
 import comment from "../assets/message-circle.png";
 import share from "../assets/share.png";
-import emoji from "../assets/mood-smile.png";
-import link from "../assets/link.png";
+// import emoji from "../assets/mood-smile.png";
+// import link from "../assets/link.png";
 import "./post.scss";
 // import { useGetPostsQuery } from "./posts/postApi";
 import { useState } from "react";

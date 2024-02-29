@@ -1,4 +1,3 @@
-import React from "react";
 import search from "../assets/search.png";
 import plus from "../assets/plus.png";
 import group1 from "../assets/group(1).png";
@@ -11,10 +10,21 @@ import "./groupsTop.scss";
 import UD from "../assets/Avatar (10).png";
 import UI from "../assets/Avatar (11).png";
 import dot from "../assets/dot.png";
+import CreateGroup from "../features/groups/CreateGroup";
+import { createPortal } from "react-dom";
+import { useState } from "react";
+import GroupLists from "../features/groups/GroupLists";
 
-const GroupsTop = () => {
+const GroupsTop = () =>
+{
+
+  
+    const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="groups-page">
+      { isOpen && <CreateGroup   onClose={ () => setIsOpen( false ) } /> }
+        
+
       <div className="top">
         <div className="title">
           <h1>Groups</h1>
@@ -23,7 +33,10 @@ const GroupsTop = () => {
               <input type="text" placeholder="Search..." />
               <img src={search} alt="" />
             </span>
-            <button>
+            <button onClick={ () =>
+            {
+              console.log( "click" ); setIsOpen( !isOpen );
+            } }>
               <img src={plus} alt="no-icon" />
               Create New Group
             </button>
@@ -38,6 +51,11 @@ const GroupsTop = () => {
           <span>See All</span>
         </div>
       </div>
+
+      <>
+      <GroupLists/>
+      </>
+
       <div className="images">
         <div className="card">
           <div className="details">
