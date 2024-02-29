@@ -1,0 +1,114 @@
+.event-card {
+  background-color: #e4eef8;
+  margin-bottom: 20px;
+  height: 80vh;
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid salmon;
+  .pic {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 30%;
+    width: 90%;
+    background-image: url("../assets/event1.png");
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    button {
+      height: 30px;
+      background-color: palevioletred;
+      border-radius: 7px;
+      border: none;
+
+      color: white;
+      &:hover {
+        background-color: blue;
+      }
+    }
+  }
+  .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    margin-top: 20px;
+    .event-details {
+      //border: 2px solid salmon;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      h4 {
+        position: relative;
+        top: -10px;
+      }
+      p {
+        position: relative;
+        top: -50px;
+        color: gray;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      border-radius: 7px;
+      border: none;
+    }
+  }
+  .two {
+    background-image: url("../assets/event2.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .three {
+    background-image: url("../assets/event3.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .four {
+    background-image: url("../assets/event4.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .cascaded-images {
+    display: flex;
+  }
+  .location {
+    display: flex;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+    img {
+      height: 65px;
+    }
+    span {
+      width: 80%;
+      color: gray;
+    }
+  }
+  .registr {
+    //border: 2px solid salmon;
+    width: 25rem;
+    margin-top: 20px;
+    height: 10%;
+    background-color: #fff;
+    color: blue;
+    border-radius: 10px;
+    border: none;
+    &:hover {
+      background-color: blue;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
