@@ -1,4 +1,3 @@
-import React from "react";
 import { useGetPostsByUserQuery } from "./postApi";
 import Post from "../Post";
 import ClipLoader from "react-spinners/ClipLoader";

@@ -1,0 +1,108 @@
+import dots from "../../assets/vertical-dots.png";
+import group1 from "../../assets/group(1).png";
+//import avatar from "../../assets/Avatar (9).png";
+// import "./groupsTop.scss";
+import UD from "../../assets/Avatar (10).png";
+import dot from "../../assets/dot.png";
+import "./group.scss";
+import { useState } from "react";
+import {
+  useAddGroupMemberMutation,
+  useDeleteGroupMemberMutation,
+} from "../groupMembers/groupMembersApi";
+import {
+  SuccessToast,
+  ErrorToast,
+  ToasterContainer,
+  LoadingToast,
+} from "../../components/Toaster";
+
+const Group = ( { group } ) =>
+{
+  const [joinGroup, setJoinGroup] = useState(false);
+  const [addGroupMember, { isLoading }] = useAddGroupMemberMutation();
+  const [deleteGroupMember] = useDeleteGroupMemberMutation();
+
+  const user = JSON.parse(localStorage.getItem("userDetails"));
+
+  const handleJoin = async () => {
+    try {
+      await addGroupMember({
+        GroupID: group.GroupID,
+        MemberID: user.UserID,
+      });
+      setJoinGroup(true);
+      SuccessToast("Joined group successfully");
+    } catch (error) {
+      console.error("Error joining group:", error);
+      ErrorToast("Failed to join group. Please try again.");
+    }
+  };
+
+  const handleLeave = async () => {
+    try {
+      await deleteGroupMember(group.GroupID, user.UserID);
+      setJoinGroup(false);
+      SuccessToast("Left group successfully");
+    } catch (error) {
+      console.error("Error leaving group:", error);
+      ErrorToast("Failed to leave group. Please try again.");
+    }
+  };
+  // const [joinGroup, setJoinGroup] = useState(false);
+  // const [addGroupMember, { isLoading }] = useAddGroupMemberMutation();
+  // const [deleteGroupMember] = useDeleteGroupMemberMutation();
+
+  // const user = JSON.parse(localStorage.getItem("userDetails"));
+  // console.log(group);
+
+  // const handleJoin = async () => {
+  //   setJoinGroup(!joinGroup);
+  //   await addGroupMember({
+  //     GroupID: group.GroupID,
+  //     MemberID: user.UserID,
+  //   });
+  // };
+
+  // const handleLeave = async () => {
+  //   setJoinGroup(!joinGroup);
+  //   await deleteGroupMember(group.GroupID, user.UserID);
+  // };
+
+  return (
+    // <div className="images">
+    <div className="card">
+      <div className="details">
+        <div className="details-left">
+          <ToasterContainer />
+          <span className="logo">
+            <img src={UD} alt="no-icon" />
+          </span>
+          <div className="group-name">
+            <h4>{group.GroupName}</h4>
+            <span>
+              <p>{group.Description} </p>
+              <img src={dot} alt="" />
+              <p> 7 posts a day</p>
+            </span>
+          </div>
+        </div>
+        <span>
+          <img src={dots} alt="" />
+        </span>
+      </div>
+      <div className="image">
+        <img src={group1} alt="" />
+      </div>
+      <div className="bottom">
+        {joinGroup ? (
+          <button onClick={handleLeave}> Leave Group</button>
+        ) : (
+          <button onClick={handleJoin}>Join Group</button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Group;
