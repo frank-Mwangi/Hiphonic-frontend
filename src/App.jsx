@@ -15,7 +15,9 @@ function App() {
   const [auth, setAuth] = useState(token !== null);
 
   useEffect(() => {
-    setAuth(token !== null);
+    if (token != null) {
+      setAuth(true);
+    }
   }, []);
 
   console.log(auth);

@@ -1,4 +1,3 @@
-
 import calendar from "../assets/calendar.png";
 import maps from "../assets/maps.png";
 
@@ -6,7 +5,8 @@ import heartblank from "../assets/heart-blank.png";
 import hordots from "../assets/horizontal-dots.png";
 import "./event.scss";
 
-const Event = () => {
+const Event = ({ event }) => {
+  console.log("In Event component:", event);
   return (
     <div className="event-page">
       <div className="title">
@@ -31,7 +31,7 @@ const Event = () => {
       <div className="cards">
         <div className="card">
           <div className="pic one">
-            <button className="ui">UI/UX Design</button>
+            <button className="ui">{event.EventName}</button>
             <span>
               <img src={heartblank} alt="no-icon" />
             </span>

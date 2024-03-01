@@ -6,6 +6,8 @@ import { postsApi } from "../features/posts/postApi.js";
 import { friendsApi } from "../features/friends/friendsApi.js";
 import { groupsApi } from "../features/groups/groupsApi.js";
 import { groupMembersApi } from "../features/groupMembers/groupMembersApi.js";
+import { eventsApi } from "../features/events/eventsApi.js";
+import { videosApi } from "../features/videos/videosApi.js";
 
 export const store = configureStore({
   reducer: {
@@ -13,16 +15,16 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     [postsApi.reducerPath]: postsApi.reducer,
     [friendsApi.reducerPath]: friendsApi.reducer,
-    [groupsApi.reducerPath]: groupsApi.reducer,
-    [groupMembersApi.reducerPath]: groupMembersApi.reducer,
+    [eventsApi.reducerPath]: eventsApi.reducer,
+    [videosApi.reducerPath]: videosApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       userApi.middleware,
       postsApi.middleware,
       friendsApi.middleware,
-      groupsApi.middleware,
-      groupMembersApi.middleware
+      eventsApi.middleware,
+      videosApi.middleware
     ),
 });
 

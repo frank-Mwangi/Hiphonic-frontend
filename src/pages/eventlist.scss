@@ -1,0 +1,205 @@
+.event-page {
+  // display: flex;
+  // flex-direction: column;
+  // flex: 5;
+  // padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 5.7;
+  //border: 2px solid green;
+  margin-left: 15%;
+  margin-right: 15%;
+  //overflow-y: scroll;
+  //background-color: #e3eefa;
+  .title {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .categories {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    li {
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px;
+      //width: 50%;
+      color: gray;
+      font-weight: bold;
+
+      ul {
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        //border: 2px solid salmon;
+        &:hover {
+          border-bottom: 4px solid blue;
+        }
+      }
+    }
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 20px;
+    background-color: #fff;
+
+    .card {
+      background-color: #e4eef8;
+      margin-bottom: 20px;
+      height: 80vh;
+      padding: 20px;
+      border-radius: 15px;
+      .pic {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        height: 30%;
+        width: 90%;
+        background-image: url("../assets/event1.png");
+        background-position: center;
+        background-size: cover;
+        border-radius: 10px;
+        button {
+          height: 30px;
+          background-color: palevioletred;
+          border-radius: 7px;
+          border: none;
+
+          color: white;
+          &:hover {
+            background-color: blue;
+          }
+        }
+      }
+      .details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 10%;
+        margin-top: 20px;
+        .event-details {
+          //border: 2px solid salmon;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          h4 {
+            position: relative;
+            top: -10px;
+          }
+          p {
+            position: relative;
+            top: -50px;
+            color: gray;
+          }
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          border-radius: 7px;
+          border: none;
+        }
+      }
+      .two {
+        background-image: url("../assets/event2.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .three {
+        background-image: url("../assets/event3.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .four {
+        background-image: url("../assets/event4.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .cascaded-images {
+        display: flex;
+      }
+      .location {
+        display: flex;
+        height: 15%;
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        border-radius: 10px;
+        align-items: center;
+        padding: 10px;
+        gap: 20px;
+        img {
+          height: 65px;
+        }
+        span {
+          width: 80%;
+          color: gray;
+        }
+      }
+      .registr {
+        //border: 2px solid salmon;
+        width: 25rem;
+        margin-top: 20px;
+        height: 10%;
+        background-color: #fff;
+        color: blue;
+        border-radius: 10px;
+        border: none;
+        &:hover {
+          background-color: blue;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .categories {
+      display: flex;
+      flex-direction: column;
+      span {
+        //width: 425px;
+        display: flex;
+        width: 200px;
+        align-items: center;
+        gap: 10px;
+        img {
+          width: 30px;
+          height: 30px;
+        }
+        h5 {
+          color: gray;
+        }
+      }
+    }
+    .cards {
+      display: flex;
+      flex-direction: column;
+
+      .card {
+        //border: 2px solid salmon;
+        width: 300px;
+        margin-left: 20px;
+        height: 400px;
+        .registr {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
