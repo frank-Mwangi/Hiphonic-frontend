@@ -22,7 +22,7 @@ const PostLists = () => {
     return <ClipLoader color="#000" loading={true} size={150} />;
   }
   if (isError) {
-    return <div>Error: {error.data.message}</div>;
+    return <div>Error: {error.data ? error.data.message : 'An error occurred'}</div>;
   }
   return (
     <div className="postsList">

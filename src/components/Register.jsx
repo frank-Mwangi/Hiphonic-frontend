@@ -122,7 +122,7 @@ const Register = () => {
             {" "}
             <Link to="/login"> Login </Link>
           </span>
-          instead.
+         
         </p>
       </form>
     </>
