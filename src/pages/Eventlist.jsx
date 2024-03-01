@@ -1,13 +1,19 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import { useGetEventsQuery } from "../features/events/eventsApi";
 import hordots from "../assets/horizontal-dots.png";
 import calendar from "../assets/calendar.png";
-
+import { LoadingToast, SuccessToast, ErrorToast } from "../components/Toaster";
 import "./eventlist.scss";
 import ClipLoader from "react-spinners/ClipLoader";
 import Event from "../features/Event";
+import { useState } from "react";
+import CreateEvent from "../features/events/CreateEvent";
 
 const Eventlist = () => {
+  const [showButton, setShowButton] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
   const {
     data: events,
     error,
@@ -21,19 +27,38 @@ const Eventlist = () => {
   );
 
   if (isLoading || isFetching) {
-    return <ClipLoader color="#000" loading={true} size={150} />;
+    return LoadingToast();
+    // return <ClipLoader color="#000" loading={true} size={150} />;
   }
   if (isError) {
+    ErrorToast(error.data.message);
     return <div>Error: {error.data.message}</div>;
   }
-
+  [...events].sort((a, b) => {
+    b.id - a.id;
+  });
   return (
     <div className="event-page">
       <div className="title">
         <h2>Find Event</h2>
-        <span>
+        <span
+          onClick={() => {
+            setShowButton(!showButton);
+          }}
+        >
           <img src={hordots} alt="" />
         </span>
+        {showButton && (
+          <div className="buttons">
+            <button
+              onClick={() => {
+                setShowForm((prevState) => !prevState);
+              }}
+            >
+              Create Event
+            </button>
+          </div>
+        )}
       </div>
       <div className="categories">
         <li>
@@ -49,11 +74,11 @@ const Eventlist = () => {
         </span>
       </div>
       <div className="cards">
-        {console.log(events)}
-        <h1>Events ndio hizi</h1>;
-        {events.forEach((element) => {
-          <Event event={element} />;
-        })}
+        {console.log(showForm)}
+        {showForm && createPortal(<CreateEvent />, document.body)}
+        {events &&
+          events.map((element, index) => <Event key={index} event={element} />)}
+        {LoadingToast(false)}
       </div>
     </div>
   );

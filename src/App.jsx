@@ -12,13 +12,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 function App() {
   const token = localStorage.getItem("token");
   console.log("token is ", token);
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(token !== null);
 
   useEffect(() => {
     if (token != null) {
       setAuth(true);
     }
-  }, [token]);
+  }, []);
 
   console.log(auth);
 

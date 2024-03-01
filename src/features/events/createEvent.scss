@@ -1,0 +1,24 @@
+section {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  position: fixed;
+  width: 100%;
+  top: 20%;
+  z-index: 1;
+  background-color: black;
+  opacity: 80%;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 75vh;
+    .form-input {
+      display: flex;
+      flex-direction: column;
+      color: white;
+    }
+  }
+}

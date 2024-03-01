@@ -13,6 +13,10 @@ export const eventsApi = createApi({
       query: () => "events/:EventID",
       providesTags: ["Events"],
     }),
+    getEventAttendedByUserID: builder.query({
+      query: (UserID) => `eventattendees/${UserID}`,
+      providesTags: ["Events"],
+    }),
     createEvent: builder.mutation({
       query: (event) => ({
         url: "/events",
@@ -21,11 +25,26 @@ export const eventsApi = createApi({
       }),
       invalidatesTags: ["Events"],
     }),
+    registerForEvent: builder.mutation({
+      query: (eventToAttend) => ({
+        url: "eventattendees",
+        method: "POST",
+        body: eventToAttend,
+      }),
+      invalidatesTags: ["Events"],
+    }),
     updateEvent: builder.mutation({
       query: (event) => ({
         url: `/events/update/:${event.EventID}`,
         method: "PUT",
         body: event,
+      }),
+      invalidatesTags: ["Events"],
+    }),
+    optOutOfEvent: builder.mutation({
+      query: (EventID, UserID) => ({
+        url: `/${EventID}/${UserID}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Events"],
     }),
@@ -41,7 +60,10 @@ export const eventsApi = createApi({
 export const {
   useGetEventsQuery,
   useGetEventByIDQuery,
+  useGetEventAttendedByUserIDQuery,
   useCreateEventMutation,
+  useRegisterForEventMutation,
   useUpdateEventMutation,
+  useOptOutOfEventMutation,
   useDeleteEventMutation,
 } = eventsApi;

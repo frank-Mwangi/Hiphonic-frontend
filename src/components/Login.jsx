@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Login.scss";
 import { fetchUser } from "../features/users/usersSlice";
+import { ErrorToast, LoadingToast } from "./Toaster";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,16 +24,23 @@ const Login = () => {
   });
 
   const onSubmit = async (data) => {
-    const { payload } = await dispatch(fetchUser(data));
-    const { token, userDetails } = payload;
-    console.log("token is ", token);
-    console.log("Payload nayo ni: ", userDetails);
+    LoadingToast();
+    try {
+      const { payload } = await dispatch(fetchUser(data));
+      const { token, userDetails } = payload;
+      console.log("token is ", token);
+      console.log("Payload nayo ni: ", userDetails);
 
-    if (token) {
-      localStorage.setItem("token", token);
-      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+      if (token) {
+        localStorage.setItem("token", token);
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
 
-      navigate("/home");
+        navigate("/home");
+      }
+    } catch (error) {
+      LoadingToast(false);
+      console.log(error);
+      ErrorToast(error);
     }
     // else
     // {
