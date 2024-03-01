@@ -34,9 +34,9 @@ const Eventlist = () => {
     ErrorToast(error.data.message);
     return <div>Error: {error.data.message}</div>;
   }
-  [...events].sort((a, b) => {
-    b.id - a.id;
-  });
+  //   [...events].sort((a, b) => {
+  //     b.id - a.id;
+  //   });
   return (
     <div className="event-page">
       <div className="title">
@@ -77,7 +77,9 @@ const Eventlist = () => {
         {console.log(showForm)}
         {showForm && createPortal(<CreateEvent />, document.body)}
         {events &&
-          events.map((element, index) => <Event key={index} event={element} />)}
+          [...events]
+            .sort((a, b) => b.id - a.id)
+            .map((element, index) => <Event key={index} event={element} />)}
         {LoadingToast(false)}
       </div>
     </div>

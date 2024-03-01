@@ -21,7 +21,7 @@ const CreateEvent = () => {
     }
   };
   return (
-    <section>
+    <section className="create-event">
       <h2>Add a New Post</h2>
       <form onSubmit={handleSubmit} className="form">
         <label className="form-input" htmlFor="EventName">

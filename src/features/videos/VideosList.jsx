@@ -27,6 +27,7 @@ const VideosList = () => {
     `Videos: ${videos}, Error: ${error}, isError: ${isError}, Loading: ${loading}, isLoading: ${isLoading}`
   );
 
+  const user = JSON.parse(localStorage.getItem("userDetails"));
   const {
     data: userVideos,
     error: err,
@@ -77,7 +78,7 @@ const VideosList = () => {
           <div className="personal-details">
             <img src={avi} alt="no-avi" />
             <span>
-              <h6>Angela Lee</h6>
+              <h6>{user.Username}</h6>
               <p>56 mins ago</p>
             </span>
           </div>
