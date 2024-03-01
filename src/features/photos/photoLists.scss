@@ -1,0 +1,23 @@
+.photosList{
+  background-color: #f7f9fc;
+  height: 90hv;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  
+  .photo-container{
+    display: flex;
+    // justify-content: space-around;
+    padding: 10px;
+    gap: 1rem;
+    // align-items: center;
+    flex-wrap: wrap;
+    // // flex-direction: column;
+    
+
+    img{
+        width: 30vh;
+        height: 40vh;
+        border-radius: 10%;
+    }
+  }
+}

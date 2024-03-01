@@ -6,6 +6,7 @@ import { postsApi } from "../features/posts/postApi.js";
 import { friendsApi } from "../features/friends/friendsApi.js";
 import { eventsApi } from "../features/events/eventsApi.js";
 import { videosApi } from "../features/videos/videosApi.js";
+import { photoApi } from "../features/photos/photoApi.js";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     [friendsApi.reducerPath]: friendsApi.reducer,
     [eventsApi.reducerPath]: eventsApi.reducer,
     [videosApi.reducerPath]: videosApi.reducer,
+    [photoApi.reducerPath]: photoApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -22,7 +24,8 @@ export const store = configureStore({
       postsApi.middleware,
       friendsApi.middleware,
       eventsApi.middleware,
-      videosApi.middleware
+      videosApi.middleware,
+      photoApi.middleware,
     ),
 });
 
