@@ -42,11 +42,14 @@ const Event = ({ event }) => {
     <div className="event-card">
       {console.log(event)}
       <div className="pic">
-        <button className="ui">{event.EventName}</button>
-        <span>
-          <img src={heartblank} alt="no-icon" />
-        </span>
-        <img src={event.EventPosterURL} />
+        <div className="buttons">
+          <button className="ui">{event.EventName}</button>
+
+          <span>
+            <img src={heartblank} alt="no-icon" />
+          </span>
+        </div>
+        <img className="poster" src={event.EventPosterURL} />
       </div>
       <div className="details">
         <div className="event-details">
