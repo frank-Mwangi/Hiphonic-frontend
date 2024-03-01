@@ -19,6 +19,8 @@ export const store = configureStore({
     [eventsApi.reducerPath]: eventsApi.reducer,
     [videosApi.reducerPath]: videosApi.reducer,
     [photoApi.reducerPath]: photoApi.reducer,
+    [groupsApi.reducerPath]: groupsApi.reducer,
+    [groupMembersApi.reducerPath]: groupMembersApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -28,6 +30,8 @@ export const store = configureStore({
       eventsApi.middleware,
       videosApi.middleware,
       photoApi.middleware,
+      groupsApi.middleware,
+      groupMembersApi.middleware
     ),
 });
 
