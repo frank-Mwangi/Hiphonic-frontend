@@ -1,51 +1,91 @@
-import { useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
+import {  useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
+import {
+  SuccessToast,
+  ErrorToast,
+  ToasterContainer,
+  LoadingToast,
+} from "../../components/Toaster";
 
 
-const CreateGroup = () => {
+
+const CreateGroup = () =>
+{
   const [addGroup, { isLoading }] = useAddGroupMutation();
-  const [getGroups] = useAddGroupMutation();
+  //const [getGroups] = useAddGroupMutation();
 
       const {
         data: groups,
         error,
        isError,
         isFetching,
-      } = useGetGroupsQuery({ refetchOnReconnect: true });
+  } = useGetGroupsQuery( { refetchOnReconnect: true } );
+  
 
   const handleSubmit = async (e) => {
+    LoadingToast();
     e.preventDefault();
     if (e.target[0].value === "") {
-      alert(" group cannot be blank");
+      ErrorToast("Group name cannot be blank");
     } else {
-      console.log(e.target[0].value);
-      const createdGroup = await addGroup({
-        GroupName: e.target[0].value,
-        Description: e.target[0].value,
-      });
-      const { message } = createdGroup.data;
+      try {
+        console.log(e.target[0].value);
+        const createdGroup = await addGroup({
+          GroupName: e.target[0].value,
+          Description: e.target[0].value, 
+        }).unwrap();
+        const { message } = createdGroup.data;
 
-      if (message) {
-        console.log("call groups");
-         console.log(
-           `Groups: ${groups}`
-        );
-        if ( groups )
-        {
-        console.log(groups.length)
-          groups.forEach(element => {
-            console.log(element)
-          });
+        if (message) {
+          console.log("Group added successfully");
+          SuccessToast("Group added successfully"); 
+          console.log(`Groups: ${groups}`);
+          if (groups) {
+            console.log(groups.length);
+            groups.forEach((element) => {
+              console.log(element);
+            });
+          }
         }
-
-        
+      } catch (error) {
+        console.error("Failed to add group:", error);
+        SuccessToast("group added successfully");
       }
-
-      // e.target.reset();
     }
   };
+
+  // const handleSubmit = async ( e ) =>
+  // {
+  //   LoadingToast();
+  //   e.preventDefault();
+  //   if (e.target[0].value === "") {
+  //     ErrorToast(" group cannot be blank");
+  //   } else {
+  //     console.log(e.target[0].value);
+  //     const createdGroup = await addGroup({
+  //       GroupName: e.target[0].value,
+  //       Description: e.target[0].value,
+  //     }).unwrap();
+  //     const { message } = createdGroup.data;
+
+  //     if (message) {
+  //       console.log("call groups");
+  //       SuccessToast("Group added successfully");
+  //       console.log(`Groups: ${groups}`);
+  //       if (groups) {
+  //         console.log(groups.length);
+  //         groups.forEach((element) => {
+  //           console.log(element);
+  //         });
+  //       }
+  //     }
+
+  //     // e.target.reset();
+  //   }
+  // };
   return (
     <div>
       <section>
+        <ToasterContainer />
         <h2>Add a New Group</h2>
         <form onSubmit={handleSubmit} className="form">
           <label className="form-input" htmlFor="groupName">

@@ -1,29 +1,25 @@
 import search from "../assets/search.png";
 import plus from "../assets/plus.png";
-import group1 from "../assets/group(1).png";
-import group2 from "../assets/group(2).png";
-import group3 from "../assets/group(3).png";
-import group4 from "../assets/group(4).png";
-import dots from "../assets/vertical-dots.png";
-import avatar from "../assets/Avatar (9).png";
+// import group1 from "../assets/group(1).png";
+// import group2 from "../assets/group(2).png";
+// import group3 from "../assets/group(3).png";
+// import group4 from "../assets/group(4).png";
+// import dots from "../assets/vertical-dots.png";
+// import avatar from "../assets/Avatar (9).png";
 import "./groupsTop.scss";
-import UD from "../assets/Avatar (10).png";
-import UI from "../assets/Avatar (11).png";
-import dot from "../assets/dot.png";
+// import UD from "../assets/Avatar (10).png";
+// import UI from "../assets/Avatar (11).png";
+// import dot from "../assets/dot.png";
 import CreateGroup from "../features/groups/CreateGroup";
-import { createPortal } from "react-dom";
+// import { createPortal } from "react-dom";
 import { useState } from "react";
 import GroupLists from "../features/groups/GroupLists";
 
-const GroupsTop = () =>
-{
-
-  
-    const [isOpen, setIsOpen] = useState(false);
+const GroupsTop = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="groups-page">
-      { isOpen && <CreateGroup   onClose={ () => setIsOpen( false ) } /> }
-        
+      {isOpen && <CreateGroup onClose={() => setIsOpen(false)} />}
 
       <div className="top">
         <div className="title">
@@ -33,10 +29,12 @@ const GroupsTop = () =>
               <input type="text" placeholder="Search..." />
               <img src={search} alt="" />
             </span>
-            <button onClick={ () =>
-            {
-              console.log( "click" ); setIsOpen( !isOpen );
-            } }>
+            <button
+              onClick={() => {
+                console.log("click");
+                setIsOpen(!isOpen);
+              }}
+            >
               <img src={plus} alt="no-icon" />
               Create New Group
             </button>
@@ -53,10 +51,10 @@ const GroupsTop = () =>
       </div>
 
       <>
-      <GroupLists/>
+        <GroupLists />
       </>
 
-      <div className="images">
+      {/* <div className="images">
         <div className="card">
           <div className="details">
             <div className="details-left">
@@ -109,8 +107,8 @@ const GroupsTop = () =>
             <button>Join Group</button>
           </div>
         </div>
-      </div>
-      <div className="recent-activity">
+      </div> */}
+      {/* <div className="recent-activity">
         <span>
           <h4>Recent Activity</h4>
         </span>
@@ -139,7 +137,7 @@ const GroupsTop = () =>
             <img src={group4} alt="" />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
