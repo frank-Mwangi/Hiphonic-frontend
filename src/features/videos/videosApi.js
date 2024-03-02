@@ -10,11 +10,11 @@ export const videosApi = createApi({
       providesTags: ["Videos"],
     }),
     getVideoByID: builder.query({
-      query: (VideoID) => `videos/:${VideoID}`,
+      query: (VideoID) => `videos/${VideoID}`,
       providesTags: ["Videos"],
     }),
     getVideosUploadedByUser: builder.query({
-      query: (UserID) => `videos/user/:${UserID}
+      query: (UserID) => `videos/user/${UserID}
         `,
       providesTags: ["Videos"],
     }),
@@ -28,7 +28,7 @@ export const videosApi = createApi({
     }),
     deleteVideo: builder.mutation({
       query: (VideoID) => ({
-        url: `videos/delete/:${VideoID}`,
+        url: `videos/delete/${VideoID}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Videos"],

@@ -58,7 +58,11 @@
     .hero {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-evenly;
+      width: 100%;
+      overflow-y: scroll;
+      //border: 2px solid black;
       .card {
         border-radius: 10px;
         width: 25%;
@@ -75,7 +79,9 @@
 
         button {
           //border: 2px solid red;
-          height: 60px;
+          height: 30px;
+          margin-bottom: 20px;
+          margin-top: 20px;
           background-color: #fff;
           border-radius: 6px;
           border: none;

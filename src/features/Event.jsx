@@ -1,6 +1,5 @@
 import calendar from "../assets/calendar.png";
 import maps from "../assets/maps.png";
-
 import heartblank from "../assets/heart-blank.png";
 //import hordots from "../assets/horizontal-dots.png";
 import "./event.scss";
@@ -9,12 +8,13 @@ import {
   useRegisterForEventMutation,
 } from "./events/eventsApi";
 import { useState } from "react";
-import { userApi } from "./register/userApi";
+// import { userApi } from "./register/userApi";
 
 const Event = ({ event }) => {
   const [registered, setRegistered] = useState(false);
-  const [registerForEvent] = useRegisterForEventMutation();
-  const [optOutOfEvent] = useOptOutOfEventMutation();
+  const [registerForEvent, { isLoading: isRegistering }] =
+    useRegisterForEventMutation();
+  const [optOutOfEvent, { isLoading }] = useOptOutOfEventMutation();
 
   const user = JSON.parse(localStorage.getItem("userDetails"));
 
@@ -31,10 +31,10 @@ const Event = ({ event }) => {
   };
 
   const handleOptOut = async () => {
-    setRegistered(false);
     const response = await optOutOfEvent(event.EventID, user.UserID).unwrap();
     if (response.status == "success") {
       console.log(response);
+      setRegistered(false);
     }
   };
 
@@ -70,11 +70,11 @@ const Event = ({ event }) => {
       </div>
       {registered ? (
         <button className="registr" onClick={handleOptOut}>
-          Opt Out
+          {isLoading ? "Opting out..." : "Opt Out"}
         </button>
       ) : (
         <button className="registr" onClick={handleRegister}>
-          Register
+          {isRegistering ? "Registering" : "Register"}
         </button>
       )}
     </div>
