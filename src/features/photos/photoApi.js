@@ -11,6 +11,7 @@ export const photoApi = createApi({
     }),
     getPhotosByUserID: builder.query({
       query: (UserID) => `photos/yours/${UserID}`,
+      providesTags: ["Photos"]
     }),
     addPhoto: builder.mutation({
       query: (newPhoto) => ({
@@ -22,7 +23,7 @@ export const photoApi = createApi({
     }),
     deletePhoto: builder.mutation({
       query: (PhotoID) => ({
-        url: `photos/${PhotoID}`,
+        url: `photos/delete/${PhotoID}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Photos"], 
