@@ -13,9 +13,10 @@ import Photos from "../pages/Photos";
 import GroupsTop from "../pages/GroupsTop.jsx";
 //import Videos from "../pages/Videos.jsx";
 //import Event from "../pages/Event.jsx";
-import FriendsList from "../features/friends/FriendsLists.jsx";
+import FriendsList from "../features/friends/friendsLists.jsx"
 import Eventlist from "../pages/Eventlist.jsx";
 import VideosList from "../features/videos/VideosList.jsx";
+import PhotoLists from "../features/photos/photoLists.jsx";
 
 export const notifContext = createContext();
 const Container = () => {
@@ -39,7 +40,7 @@ const Container = () => {
             <Route path="/events" element={<Eventlist />} />
             <Route path="/videos" element={<VideosList />} />
 
-            <Route path="/photos" element={<Photos />} />
+            <Route path="/photos" element={<PhotoLists />} />
           </Routes>
 
           <Rightbar />
