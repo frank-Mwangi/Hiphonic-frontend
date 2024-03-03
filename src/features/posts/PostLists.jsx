@@ -22,12 +22,17 @@ const PostLists = () => {
     return <ClipLoader color="#000" loading={true} size={150} />;
   }
   if (isError) {
-    return <div>Error: {error.data ? error.data.message : 'An error occurred'}</div>;
+    return (
+      <div>Error: {error.data ? error.data.message : "An error occurred"}</div>
+    );
   }
   return (
     <div className="postsList">
       <section className="posts-container">
-        {posts && posts.map((post, index) => <Post key={index} post={post} />)}
+        {posts &&
+          [...posts]
+            .sort((a, b) => b.PostID - a.PostID)
+            .map((post, index) => <Post key={index} post={post} />)}
       </section>
     </div>
   );

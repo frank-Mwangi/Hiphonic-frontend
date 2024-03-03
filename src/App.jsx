@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 // import Profile from "./pages/Profile";
 import { Routes, Route, Navigate } from "react-router-dom";
+import RegisterNew from "./components/RegisterNew";
 //import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
       {/* <Container /> */}
 
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<RegisterNew />} />
         <Route path="/login" element={<Login />} />
         {auth ? (
           <Route

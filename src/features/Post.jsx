@@ -20,12 +20,8 @@ const Post = ({ post }) => {
 
   return (
     <div>
-      {/* {isError && <div>Error: {error.data.message}</div>}
-      {isLoading ||
-        (isFetching && <ClipLoader color="#000" loading={true} size={150} />)} */}
-      {/* <h2>Posts</h2> */}
       {
-        <section className="post" key={post.index}>
+        <section className="post">
           <div className="handle">
             <img src={avi} alt="no-avi" />
             <div className="name">
