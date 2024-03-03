@@ -15,7 +15,7 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
 
 export const fetchUser = createAsyncThunk("users/fetchUser", async (user) => {
   try {
-    const response = await axios.post(`${USERS_URL}login`, user);
+    const response = await axios.post(`${USERS_URL}/login`, user);
     return response.data;
   } catch (error) {
     return error.message;

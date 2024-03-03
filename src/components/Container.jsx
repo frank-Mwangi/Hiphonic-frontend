@@ -17,6 +17,8 @@ import FriendsList from "../features/friends/FriendsLists.jsx";
 import Eventlist from "../pages/Eventlist.jsx";
 import VideosList from "../features/videos/VideosList.jsx";
 
+import IndividualGroup from "../pages/IndividualGroup.jsx";
+
 export const notifContext = createContext();
 const Container = () => {
   const [notificationClicked, setNotificationClicked] = useState(false);
@@ -36,6 +38,8 @@ const Container = () => {
             <Route path="/timeline" element={<Timeline />} />
             <Route path="/friends" element={<FriendsList />} />
             <Route path="/groups" element={<GroupsTop />} />
+            <Route path="/groups/:id" element={<IndividualGroup />} />
+
             <Route path="/events" element={<Eventlist />} />
             <Route path="/videos" element={<VideosList />} />
 

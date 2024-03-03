@@ -1,4 +1,3 @@
-
 // import avi1 from "../assets/Avatar (1).png";
 // import avi2 from "../assets/Avatar (2).png";
 // import avi3 from "../assets/Avatar (4).png";
@@ -31,7 +30,7 @@
 //   };
 
 //   const handleSuggestions = () => {
-    
+
 //     console.log("Displaying suggestions");
 //   };
 
@@ -129,31 +128,93 @@
 
 // export default Friends;
 
-
-import './friendsCard.scss';
+import "./friendsCard.scss";
 import avi from "../assets/Avatar.png";
 import verticalDots from "../assets/vertical-dots.png";
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 
+const FriendCard = ({ user }) => {
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [showMessageInput, setShowMessageInput] = useState(false);
+  const [messageText, setMessageText] = useState("");
+  const [client, setClient] = useState(null);
+  const [messages, setMessages] = useState([]);
 
-const FriendCard = ( { user } ) =>
-{
-    const [showDropDown, setShowDropDown] = useState(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShowDropDown(!showDropDown);
+  };
 
-    const handleClick = (e) => {
-      e.preventDefault();
+  const handleRemoveFriend = () => {
+    console.log("Friend removed");
+    setShowDropDown(false);
+  };
 
-      setShowDropDown(!showDropDown);
+  useEffect(() => {
+    const newClient = new W3CWebSocket("ws://localhost:5400");
+
+    newClient.onopen = () => {
+      console.log("WebSocket Client Connected");
     };
 
-    const handleRemoveFriend = () => {
-      console.log("Friend removed");
-      setShowDropDown(false);
+    newClient.onmessage = (message) => {
+      console.log("Received:", message);
+
+      // Check if the message data is a Blob
+      if (message.data instanceof Blob) {
+        // Use FileReader to read the Blob content
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          try {
+            const data = JSON.parse(event.target.result);
+            console.log("Received JSON data:", data);
+
+            // Check if the received data is a message intended for the current user
+            if (data.sender === user.UserID || data.recipient === user.UserID) {
+              setMessages((prevMessages) => [...prevMessages, data]);
+            }
+          } catch (error) {
+            console.error("Error parsing JSON:", error);
+          }
+        };
+        reader.readAsText(message.data);
+      } else {
+        // Handle non-Blob data here (if necessary)
+      }
     };
 
-    
+    newClient.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+    };
 
-    
+    setClient(newClient);
+
+    return () => {
+      if (newClient) {
+        newClient.close();
+      }
+    };
+  }, [user.UserID]);
+
+  const handleMessage = () => {
+    setShowMessageInput(true);
+  };
+
+  const handleSendMessage = () => {
+    if (
+      client &&
+      client.readyState === client.OPEN &&
+      messageText.trim() !== ""
+    ) {
+      client.send(
+        JSON.stringify({ recipient: user.UserID, message: messageText })
+      );
+      setMessageText("");
+      setShowMessageInput(false);
+    }
+  };
+
   return (
     <div className="friend">
       <div className="top">
@@ -165,21 +226,39 @@ const FriendCard = ( { user } ) =>
           <p>{user.TagName}</p>
         </div>
         <div className="dots">
-           <img onClick={handleClick} src={verticalDots} alt="" />
-                   {showDropDown && (
-                    <div className="dropdown">
-                      <button onClick={handleRemoveFriend}>
-                        Remove Friend
-                      </button>
-                    </div>
-                   )}
+          <img onClick={handleClick} src={verticalDots} alt="" />
+          {showDropDown && (
+            <div className="dropdown">
+              <button onClick={handleRemoveFriend}>Remove Friend</button>
+            </div>
+          )}
         </div>
       </div>
       <div className="bottom">
-        <button>Message</button>
+        <button onClick={handleMessage}>Message</button>
+      </div>
+      {showMessageInput && (
+        <div className="message-input">
+          <input
+            placeholder="Type Message"
+            type="text"
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+          />
+          <button onClick={handleSendMessage}>Send</button>
+        </div>
+      )}
+
+      <div>
+        <h2>Messages</h2>
+        <ul>
+          {messages.map((msg, index) => (
+            <li key={index}>{msg.message}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
-}
+};
 
-export default FriendCard
+export default FriendCard;

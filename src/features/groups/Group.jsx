@@ -16,7 +16,7 @@ import {
   ToasterContainer,
   LoadingToast,
 } from "../../components/Toaster";
-
+// import { Link } from "react-router-dom";
 const Group = ( { group } ) =>
 {
   const [joinGroup, setJoinGroup] = useState(false);
@@ -79,7 +79,9 @@ const Group = ( { group } ) =>
             <img src={UD} alt="no-icon" />
           </span>
           <div className="group-name">
-            <h4>{group.GroupName}</h4>
+            {/* <Link to={`${group.GroupID}`}>
+              <h4>{group.GroupName}</h4>
+            </Link> */}
             <span>
               <p>{group.Description} </p>
               <img src={dot} alt="" />
