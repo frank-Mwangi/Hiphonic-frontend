@@ -16,7 +16,7 @@ import {
   ToasterContainer,
   LoadingToast,
 } from "../../components/Toaster";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Group = ( { group } ) =>
 {
   const [joinGroup, setJoinGroup] = useState(false);
@@ -70,40 +70,75 @@ const Group = ( { group } ) =>
   // };
 
   return (
-    // <div className="images">
-    <div className="card">
-      <div className="details">
-        <div className="details-left">
-          <ToasterContainer />
-          <span className="logo">
-            <img src={UD} alt="no-icon" />
-          </span>
-          <div className="group-name">
-            {/* <Link to={`${group.GroupID}`}>
-              <h4>{group.GroupName}</h4>
-            </Link> */}
-            <span>
-              <p>{group.Description} </p>
-              <img src={dot} alt="" />
-              <p> 7 posts a day</p>
+    <div className="group1">
+      <div className="card">
+        <div className="details">
+          <div className="details-left">
+            <ToasterContainer />
+            <span className="logo">
+              <img src={UD} alt="no-icon" />
             </span>
+            <div className="group-name">
+              <Link to={`${group.GroupID}`}>
+                <h4>{group.GroupName}</h4>
+              </Link>
+              <span>
+                <p>{group.Description} </p>
+                <img src={dot} alt="" />
+                <p> 7 posts a day</p>
+              </span>
+            </div>
           </div>
+          <span>
+            <img src={dots} alt="" />
+          </span>
         </div>
-        <span>
-          <img src={dots} alt="" />
-        </span>
+        <div className="image">
+          <img src={group1} alt="" />
+        </div>
+        <div className="bottom">
+          {joinGroup ? (
+            <button onClick={handleLeave}> Leave Group</button>
+          ) : (
+            <button onClick={handleJoin}>Join Group</button>
+          )}
+        </div>
       </div>
-      <div className="image">
-        <img src={group1} alt="" />
-      </div>
-      <div className="bottom">
-        {joinGroup ? (
-          <button onClick={handleLeave}> Leave Group</button>
-        ) : (
-          <button onClick={handleJoin}>Join Group</button>
-        )}
+      <div className="card">
+        <div className="details">
+          <div className="details-left">
+            <ToasterContainer />
+            <span className="logo">
+              <img src={UD} alt="no-icon" />
+            </span>
+            <div className="group-name">
+              <Link to={`${group.GroupID}`}>
+                <h4>{group.GroupName}</h4>
+              </Link>
+              <span>
+                <p>{group.Description} </p>
+                <img src={dot} alt="" />
+                <p> 7 posts a day</p>
+              </span>
+            </div>
+          </div>
+          <span>
+            <img src={dots} alt="" />
+          </span>
+        </div>
+        <div className="image">
+          <img src={group1} alt="" />
+        </div>
+        <div className="bottom">
+          {joinGroup ? (
+            <button onClick={handleLeave}> Leave Group</button>
+          ) : (
+            <button onClick={handleJoin}>Join Group</button>
+          )}
+        </div>
       </div>
     </div>
+    // <div className="images">
   );
 };
 

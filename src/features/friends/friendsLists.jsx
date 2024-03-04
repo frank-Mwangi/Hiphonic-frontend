@@ -7,7 +7,10 @@ import { useState, useEffect } from "react";
 import FriendCard from "../../pages/FriendCard";
 import { useGetUserQuery, useGetUsersQuery } from "../register/userApi";
 import "./friendsList.scss";
-import { useGetMessagesBySenderIDAndReceiverIDQuery, useGetMessagesBySenderIDQuery } from "../messages/messageApi";
+import {
+  useGetMessagesBySenderIDAndReceiverIDQuery,
+  useGetMessagesBySenderIDQuery,
+} from "../messages/messageApi";
 
 const FriendsList = () => {
   const [following, setFollowing] = useState(true);
@@ -23,39 +26,37 @@ const FriendsList = () => {
     setShowConversation(true);
   };
 
+  const loggedInUser = JSON.parse(localStorage.getItem("userDetails"));
+  const UserID = loggedInUser.UserID;
 
-    const user = JSON.parse(localStorage.getItem("userDetails"));
-  const UserID = user.UserID;
+  useEffect(() => {
+    if (selectedUser) {
+      const fetchData = async () => {
+        try {
+          // Fetch messages by sender ID and receiver ID
+          const senderMessages =
+            await useGetMessagesBySenderIDAndReceiverIDQuery(
+              UserID,
+              selectedUser.UserID
+            ).unwrap();
+          setMessages(senderMessages);
+        } catch (error) {
+          console.error("Error fetching messages:", error);
+        }
+      };
 
-useEffect(() => {
-  if (selectedUser) {
-    const fetchData = async () => {
-      try {
-        // Fetch messages by sender ID and receiver ID
-        const senderMessages = await useGetMessagesBySenderIDAndReceiverIDQuery(
-          UserID,
-          selectedUser.UserID
-        ).unwrap();
-        setMessages(senderMessages);
-      } catch (error) {
-        console.error("Error fetching messages:", error);
-      }
-    };
+      fetchData();
+    }
+  }, [selectedUser]);
 
-    fetchData();
-  }
-}, [selectedUser, UserID]);
-
-  
   useEffect(() => {
     const newClient = new W3CWebSocket("ws://localhost:5400");
 
     newClient.onopen = () => {
       console.log("WebSocket Client Connected");
 
-         const userID = JSON.parse(localStorage.getItem("userDetails")).UserID;
-         newClient.send(JSON.stringify({ event: "messageID", userID }));
-      
+      //const userID = JSON.parse(localStorage.getItem("userDetails")).UserID;
+      newClient.send(JSON.stringify({ event: "messageID", userID }));
     };
 
     newClient.onmessage = (message) => {
@@ -99,8 +100,6 @@ useEffect(() => {
   }, []);
   // SDSD
 
-
-
   const handleSendMessage = () => {
     if (
       client &&
@@ -120,11 +119,9 @@ useEffect(() => {
     }
   };
 
-  console.log(user);
-  
-  console.log(UserID);
+  //console.log(user);
 
-
+  //console.log(UserID);
 
   const {
     data: friends,
@@ -137,51 +134,73 @@ useEffect(() => {
     `Friends: ${friends}, error: ${makosa}, isLoading: ${inaload}, isError: ${ikoNaMakosa}, isFetching: ${inaFetch}`
   );
 
-  console.log("my messages are ", messages);
+  //console.log("my messages are ", messages);
 
-  const { error, isLoading, isError, isFetching } = useGetUserQuery(UserID);
+  // const {
+  //   data: user1,
+  //   error,
+  //   isLoading,
+  //   isError,
+  //   isFetching,
+  // } = useGetUserQuery(UserID);
 
-  const { data: users2 } = useGetUsersQuery();
+  //console.log("User1 ni:", user1);
 
-  console.log(users2);
+  const {
+    data: allUsers,
+    error,
+    isLoading,
+    isError,
+    isFetching,
+  } = useGetUsersQuery();
+
+  console.log(allUsers);
   let nonFriends;
-  if (users2) {
-    const filteredFriends = users2.filter(
-      (user) => !friends.some((friend) => friend.Username === user.Username)
-    );
 
-    console.log("filtered Friends", filteredFriends);
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  if (allUsers) {
+    // const filteredFriends = allUsers.filter(
+    //   (user) => !friends.some((friend) => friend.Username === user.Username)
+    // );
 
-    nonFriends = filteredFriends.filter(
-      (user) => user.UserID !== userDetails.UserID
+    // console.log("filtered Friends", filteredFriends);
+    // const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
+    // const notFollowedUsers = users.filter(user => !followedUsers.find(followedUser => followedUser.id === user.id));
+
+    // console.log(notFollowedUsers);
+
+    nonFriends = allUsers.filter(
+      (user) => !friends.find((friend) => friend.UserID == user.UserID)
     );
   }
 
-  console.log("Non Friends are: ", nonFriends);
+  //console.log("Friends are: ", friends);
 
-  const handleClick = () => {
-    console.log("users on click is ", typeof nonFriends, nonFriends);
-    setFollowing(!following);
-  };
+  //console.log("Non Friends are: ", nonFriends);
 
+  // const handleClick = () => {
+  //   console.log("users on click is ", typeof nonFriends, nonFriends);
+  //   setFollowing(!following);
+  // };
 
-  
-  const handleChildClick = ( user ) =>
-  {
-    
+  const handleChildClick = (user) => {
     setShowConversation(true);
     setSelectedUser(user);
   };
 
   return (
     <div className="friends-list">
-      {isError && <div>Error: {error.data}</div>}
+      {isError ||
+        error ||
+        ikoNaMakosa ||
+        (makosa && <div>Error: {error.data}</div>)}
       {isLoading ||
-        (isFetching && <ClipLoader color="#000" loading={true} size={150} />)}
+        isFetching ||
+        inaload ||
+        (inaFetch && <ClipLoader color="#000" loading={true} size={150} />)}
       <div className="suggested-friends-title">
-        <span onClick={handleClick}>Suggested</span>
-        <span onClick={handleClick}>Following</span>
+        <span onClick={() => setFollowing(false)}>Suggested</span>
+        <span onClick={() => setFollowing(true)}>Following</span>
       </div>
       <section
         className="user-container"
@@ -197,7 +216,7 @@ useEffect(() => {
                 onChildClick={() => handleChildClick(friend)}
               />
             ))
-          ) : nonFriends ? (
+          ) : nonFriends.length > 0 ? (
             nonFriends.map(
               (
                 user,
@@ -211,7 +230,7 @@ useEffect(() => {
         <div>
           {showConversation && (
             <div>
-              <h1>{selectedUser.Username} Chart Conversation History</h1>
+              <h1>{selectedUser.Username} Chat Conversation History</h1>
               <div className="conversation">
                 <ul>
                   {/* Display conversation history here */}

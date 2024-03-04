@@ -22,12 +22,13 @@ const GroupLists = () => {
     return <div>Error: {error.data.message}</div>;
   }
 
- 
   return (
     <div className="groupsList">
       <section className="groups-container">
         {groups &&
-          groups.map((group, index) => <Group key={index} group={group} />)}
+          [...groups]
+            .sort((a, b) => b.GroupID - a.GroupID)
+            .map((group, index) => <Group key={index} group={group} />)}
         <RecentActivity groups={groups} />
       </section>
     </div>
