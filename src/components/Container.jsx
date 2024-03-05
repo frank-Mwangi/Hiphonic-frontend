@@ -19,6 +19,7 @@ import VideosList from "../features/videos/VideosList.jsx";
 import PhotoLists from "../features/photos/photoLists.jsx";
 
 export const notifContext = createContext();
+
 const Container = () => {
   const [notificationClicked, setNotificationClicked] = useState(false);
   return (

@@ -27,7 +27,7 @@ const PostLists = () => {
   return (
     <div className="postsList">
       <section className="posts-container">
-        {posts && posts.map((post, index) => <Post key={index} post={post} />)}
+        {posts && [...posts].sort((a, b)=>(b.PostID - a.PostID)).map((post, index) => <Post key={index} post={post} />)}
       </section>
     </div>
   );

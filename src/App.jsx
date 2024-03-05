@@ -2,17 +2,27 @@ import { useEffect, useState } from "react";
 import "./App.scss";
 import Container from "./components/Container";
 import Login from "./components/Login";
-// import Navbar from "./components/Navbar";
-// import Sidebar from "./components/Sidebar";
 import Register from "./components/Register";
-// import Profile from "./pages/Profile";
 import { Routes, Route, Navigate } from "react-router-dom";
-//import { useNavigate } from "react-router-dom";
+import { io } from "socket.io-client";
+import { SocketProvider } from "./socketContext.jsx";
 
 function App() {
   const token = localStorage.getItem("token");
-  console.log("token is ", token);
   const [auth, setAuth] = useState(token !== null);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const newSocket = io("http://127.0.0.1:5000");
+    setSocket(newSocket);
+
+    // Emit newUser event when socket connection is established
+    newSocket.emit("newUser");
+
+    return () => {
+      newSocket.disconnect(); // Clean up socket connection when component unmounts
+    };
+  }, []);
 
   useEffect(() => {
     if (token != null) {
@@ -20,12 +30,8 @@ function App() {
     }
   }, []);
 
-  console.log(auth);
-
   return (
-    <>
-      {/* <Container /> */}
-
+    <SocketProvider socket={socket}>
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -42,7 +48,7 @@ function App() {
           <Route path="/*" element={<Navigate to="/login" />} />
         )}
       </Routes>
-    </>
+    </SocketProvider>
   );
 }
 

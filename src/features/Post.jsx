@@ -10,13 +10,30 @@ import share from "../assets/share.png";
 import "./post.scss";
 // import { useGetPostsQuery } from "./posts/postApi";
 import { useState } from "react";
+import { useSocket } from "../socketContext";
 
 const Post = ({ post }) => {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState(0);
   const [shares, setShares] = useState(0);
+  const socket = useSocket();
 
   const user = JSON.parse(localStorage.getItem("userDetails"));
+
+  const handleNotification = (type) =>{
+    console.log("Sending notification...");
+    console.log("Sender:", user.Username);
+    console.log("Receiver:", post.Username);
+    console.log("Type:", type);
+   
+    setLikes(true);
+     
+    socket.emit("sendNotification",{
+      senderName: user.Username,
+      receiverName: post.Username,
+      type,
+    })
+  }
 
   return (
     <div>
@@ -43,7 +60,9 @@ const Post = ({ post }) => {
           </div> */}
           <div className="impressions">
             <div className="impression" onClick={() => setLikes(likes + 1)}>
-              <img src={heart} alt="like-icon" />
+              <img src={heart} alt="like-icon" 
+              onClick={()=>handleNotification(1)}
+               />
               <p>
                 {likes}
                 <span> Likes</span>
@@ -53,14 +72,18 @@ const Post = ({ post }) => {
               className="impression"
               onClick={() => setComments(comments + 1)}
             >
-              <img src={comment} alt="comment-icon" />
+              <img src={comment} alt="comment-icon" 
+              onClick={()=>handleNotification(2)}
+              />
               <p>
                 {comments}
                 <span> Comments</span>
               </p>
             </div>
             <div className="impression" onClick={() => setShares(shares + 1)}>
-              <img src={share} alt="share-icon" />
+              <img src={share} alt="share-icon"
+              onClick={()=>handleNotification(3)}
+               />
               <p>
                 {shares}
                 <span> Share</span>
