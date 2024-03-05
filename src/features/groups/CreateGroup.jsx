@@ -1,25 +1,22 @@
-import {  useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
+import { useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
 import {
   SuccessToast,
   ErrorToast,
   ToasterContainer,
   LoadingToast,
 } from "../../components/Toaster";
+import "./CreateGroup.scss";
 
-
-
-const CreateGroup = () =>
-{
+const CreateGroup = () => {
   const [addGroup, { isLoading }] = useAddGroupMutation();
   //const [getGroups] = useAddGroupMutation();
 
-      const {
-        data: groups,
-        error,
-       isError,
-        isFetching,
-  } = useGetGroupsQuery( { refetchOnReconnect: true } );
-  
+  const {
+    data: groups,
+    error,
+    isError,
+    isFetching,
+  } = useGetGroupsQuery({ refetchOnReconnect: true });
 
   const handleSubmit = async (e) => {
     LoadingToast();
@@ -31,13 +28,13 @@ const CreateGroup = () =>
         console.log(e.target[0].value);
         const createdGroup = await addGroup({
           GroupName: e.target[0].value,
-          Description: e.target[0].value, 
+          Description: e.target[0].value,
         }).unwrap();
         const { message } = createdGroup.data;
 
         if (message) {
           console.log("Group added successfully");
-          SuccessToast("Group added successfully"); 
+          SuccessToast("Group added successfully");
           console.log(`Groups: ${groups}`);
           if (groups) {
             console.log(groups.length);
@@ -83,7 +80,7 @@ const CreateGroup = () =>
   //   }
   // };
   return (
-    <div>
+    <div className="createGroupPage">
       <section>
         <ToasterContainer />
         <h2>Add a New Group</h2>

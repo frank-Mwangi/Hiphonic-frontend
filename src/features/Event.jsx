@@ -1,6 +1,12 @@
 import calendar from "../assets/calendar.png";
 import maps from "../assets/maps.png";
 import heartblank from "../assets/heart-blank.png";
+import {
+  ToasterContainer,
+  ErrorToast,
+  LoadingToast,
+  SuccessToast,
+} from "../components/Toaster";
 //import hordots from "../assets/horizontal-dots.png";
 import "./event.scss";
 import {
@@ -8,6 +14,8 @@ import {
   useRegisterForEventMutation,
 } from "./events/eventsApi";
 import { useState } from "react";
+import EventDetails from "./events/EventDetails";
+import { createPortal } from "react-dom";
 // import { userApi } from "./register/userApi";
 
 const Event = ({ event }) => {
@@ -15,32 +23,52 @@ const Event = ({ event }) => {
   const [registerForEvent, { isLoading: isRegistering }] =
     useRegisterForEventMutation();
   const [optOutOfEvent, { isLoading }] = useOptOutOfEventMutation();
+  const [openEvent, setOpenEvent] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("userDetails"));
 
-  console.log(event);
+  const handleOpenEvent = () => {
+    setOpenEvent(!openEvent);
+  };
+
+  //console.log(event);
   const handleRegister = async () => {
-    const response = await registerForEvent({
-      EventID: event.EventID,
-      AttendeeID: user.UserID,
-    }).unwrap();
-    console.log("Response: ", response);
-    if (response.status == "success") {
+    try {
+      LoadingToast();
+      const response = await registerForEvent({
+        EventID: event.EventID,
+        AttendeeID: user.UserID,
+      }).unwrap();
+      LoadingToast(false);
+      console.log("Response: ", response);
+      SuccessToast(response.message);
+
       setRegistered(true);
+    } catch (error) {
+      LoadingToast(false);
+      setRegistered(false);
     }
   };
 
   const handleOptOut = async () => {
-    const response = await optOutOfEvent(event.EventID, user.UserID).unwrap();
-    if (response.status == "success") {
+    try {
+      LoadingToast();
+      const response = await optOutOfEvent(event.EventID, user.UserID).unwrap();
+      LoadingToast(false);
       console.log(response);
+      SuccessToast(response.message);
       setRegistered(false);
+    } catch (error) {
+      LoadingToast(false);
+      ErrorToast(error.message);
+      setRegistered(true);
     }
   };
 
   return (
     <div className="event-card">
-      {console.log(event)}
+      <ToasterContainer />
+      {/* {console.log(event)} */}
       <div className="pic">
         <div className="buttons">
           <button className="ui">{event.EventName}</button>
@@ -63,11 +91,15 @@ const Event = ({ event }) => {
       </div>
       <div className="cascaded-images">
         <p>+2K are going</p>
+        <button className="seeMorebtn" onClick={handleOpenEvent}>
+          See more
+        </button>
       </div>
       <div className="location">
         <img src={maps} alt="no-map" />
         <span>{event.Location}</span>
       </div>
+      {console.log("Registered state: ", registered)}
       {registered ? (
         <button className="registr" onClick={handleOptOut}>
           {isLoading ? "Opting out..." : "Opt Out"}
@@ -77,6 +109,11 @@ const Event = ({ event }) => {
           {isRegistering ? "Registering" : "Register"}
         </button>
       )}
+      {openEvent &&
+        createPortal(
+          <EventDetails event={event} handleOpenEvent={handleOpenEvent} />,
+          document.body
+        )}
     </div>
   );
 };

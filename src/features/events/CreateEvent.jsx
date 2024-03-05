@@ -1,14 +1,15 @@
 import { useCreateEventMutation } from "./eventsApi";
 import "./createEvent.scss";
+import { ErrorToast, ToasterContainer } from "../../components/Toaster";
 
-const CreateEvent = () => {
+const CreateEvent = ({ setShowForm }) => {
   console.log("Modal reached!!!!!");
   const [createEvent, { isLoading }] = useCreateEventMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (e.target.value === "") {
-      alert("Event details cannot be blank");
+      ErrorToast("Event details cannot be blank");
     } else {
       createEvent({
         EventName: e.target[0].value,
@@ -18,10 +19,12 @@ const CreateEvent = () => {
         EventPosterURL: e.target[4].value,
       });
       e.target.reset();
+      setShowForm((prevState) => !prevState);
     }
   };
   return (
     <section className="create-event">
+      <ToasterContainer />
       <h2>Add a New Post</h2>
       <form onSubmit={handleSubmit} className="form">
         <label className="form-input" htmlFor="EventName">

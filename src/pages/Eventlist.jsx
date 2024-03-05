@@ -55,7 +55,7 @@ const Eventlist = () => {
                 setShowForm((prevState) => !prevState);
               }}
             >
-              Create Event
+              {showForm ? "Close Form" : "Create Event"}
             </button>
           </div>
         )}
@@ -75,10 +75,14 @@ const Eventlist = () => {
       </div>
       <div className="cards">
         {console.log(showForm)}
-        {showForm && createPortal(<CreateEvent />, document.body)}
+        {showForm &&
+          createPortal(
+            <CreateEvent setShowForm={setShowForm} />,
+            document.body
+          )}
         {events &&
           [...events]
-            .sort((a, b) => b.id - a.id)
+            .sort((a, b) => b.EventID - a.EventID)
             .map((element, index) => <Event key={index} event={element} />)}
         {LoadingToast(false)}
       </div>

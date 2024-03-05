@@ -7,11 +7,13 @@ import {
 } from "../../components/Toaster";
 
 
+
 const CreatePost = () =>
 {
   const user =JSON.parse(localStorage.getItem("userDetails"));
 
    const [addPost, { isLoading }] = useAddPostMutation();
+
   const handleSubmit = async (e) => {
     LoadingToast();
     e.preventDefault();
@@ -19,6 +21,7 @@ const CreatePost = () =>
       ErrorToast("Post cannot be blank");
     } else {
       try {
+
       const response = await addPost({
         UserID: user.UserID,
         Content: e.target[0].value,
@@ -34,6 +37,7 @@ const CreatePost = () =>
           console.error("Failed to add post:", error);
           ErrorToast("Failed to add post. Please try again.");
         };
+
     }
   };
 

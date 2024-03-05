@@ -4,8 +4,13 @@ import Container from "./components/Container";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { Routes, Route, Navigate } from "react-router-dom";
+
 import { io } from "socket.io-client";
 import { SocketProvider } from "./socketContext.jsx";
+
+import RegisterNew from "./components/RegisterNew";
+//import { useNavigate } from "react-router-dom";
+
 
 function App() {
   const token = localStorage.getItem("token");
@@ -33,7 +38,7 @@ function App() {
   return (
     <SocketProvider socket={socket}>
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<RegisterNew />} />
         <Route path="/login" element={<Login />} />
         {auth ? (
           <Route
