@@ -9,6 +9,7 @@ export const groupsApi = createApi({
   endpoints: (builder) => ({
     getGroups: builder.query({
       query: () => `groups/allgroups`,
+      providesTags: ['Groups']
     }),
 
     addGroup: builder.mutation({

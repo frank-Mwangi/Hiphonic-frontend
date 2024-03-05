@@ -16,13 +16,15 @@ import {
   ToasterContainer,
   LoadingToast,
 } from "../../components/Toaster";
-import { Link } from "react-router-dom";
-const Group = ( { group } ) =>
-{
+// import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
+import IndividualGroup from "../../pages/IndividualGroup";
+
+const Group = ({ group }) => {
   const [joinGroup, setJoinGroup] = useState(false);
   const [addGroupMember, { isLoading }] = useAddGroupMemberMutation();
   const [deleteGroupMember] = useDeleteGroupMemberMutation();
-
+  const [showGroupDetails, setShowGroupDetails] = useState(false);
   const user = JSON.parse(localStorage.getItem("userDetails"));
 
   const handleJoin = async () => {
@@ -37,6 +39,10 @@ const Group = ( { group } ) =>
       console.error("Error joining group:", error);
       ErrorToast("Failed to join group. Please try again.");
     }
+  };
+
+  const handleShowGroupDetails = () => {
+    setShowGroupDetails(!showGroupDetails);
   };
 
   const handleLeave = async () => {
@@ -79,9 +85,8 @@ const Group = ( { group } ) =>
               <img src={UD} alt="no-icon" />
             </span>
             <div className="group-name">
-              <Link to={`${group.GroupID}`}>
-                <h4>{group.GroupName}</h4>
-              </Link>
+              {/* <Link to={`${group.GroupID}`}></Link> */}
+              <h4>{group.GroupName}</h4>
               <span>
                 <p>{group.Description} </p>
                 <img src={dot} alt="" />
@@ -103,6 +108,7 @@ const Group = ( { group } ) =>
             <button onClick={handleJoin}>Join Group</button>
           )}
         </div>
+        <button onClick={handleShowGroupDetails}>Show More</button>
       </div>
       <div className="card">
         <div className="details">
@@ -112,9 +118,10 @@ const Group = ( { group } ) =>
               <img src={UD} alt="no-icon" />
             </span>
             <div className="group-name">
-              <Link to={`${group.GroupID}`}>
-                <h4>{group.GroupName}</h4>
-              </Link>
+              {/* <Link to={`${group.GroupID}`}> */}
+
+              {/* </Link> */}
+              <h4>{group.GroupName}</h4>
               <span>
                 <p>{group.Description} </p>
                 <img src={dot} alt="" />
@@ -136,7 +143,16 @@ const Group = ( { group } ) =>
             <button onClick={handleJoin}>Join Group</button>
           )}
         </div>
+        <button onClick={handleShowGroupDetails}>Show More</button>
       </div>
+      {showGroupDetails &&
+        createPortal(
+          <IndividualGroup
+            group={group}
+            handleShowGroupDetails={handleShowGroupDetails}
+          />,
+          document.body
+        )}
     </div>
     // <div className="images">
   );

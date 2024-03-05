@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import {
   useAddFriendshipMutation,
-//  useDeleteFriendshipByIDMutation,
+  //  useDeleteFriendshipByIDMutation,
   useDeleteFriendshipMutation,
 } from "../features/friends/friendsApi";
 import {
@@ -22,7 +22,7 @@ const FriendCard = ({ user, onChildClick }) => {
   const [client, setClient] = useState(null);
   const [isFriend, setIsFriend] = useState(false);
   const [addFriendship, { isLoading }] = useAddFriendshipMutation();
-  const [useDeleteFriendshipByID, { isLoading: itsLoading }] =
+  const [deleteFriendshipByID, { isLoading: itsLoading }] =
     useDeleteFriendshipMutation();
   const loggedInUser = JSON.parse(localStorage.getItem("userDetails"));
 
@@ -32,9 +32,11 @@ const FriendCard = ({ user, onChildClick }) => {
     e.preventDefault();
     setShowDropDown(!showDropDown);
   };
+  // console.log("user ids",{ User1ID: loggedInUser.UserID, User2ID: user.UserID });
   const handleRemoveFriend = async () => {
     try {
-      await useDeleteFriendshipByID(user.loggedInUser, UserID);
+      await deleteFriendshipByID ({User1ID:loggedInUser.UserID, User2ID
+        :user.UserID});
       setIsFriend(false);
       setShowDropDown(false);
       SuccessToast("Friend removed successfully");

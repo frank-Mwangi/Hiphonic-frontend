@@ -1,28 +1,24 @@
-import {  useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
+import { useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
 import {
   SuccessToast,
   ErrorToast,
   ToasterContainer,
-  LoadingToast,
+  // LoadingToast,
 } from "../../components/Toaster";
 
-
-
-const CreateGroup = () =>
-{
+const CreateGroup = ({ onClose }) => {
   const [addGroup, { isLoading }] = useAddGroupMutation();
   //const [getGroups] = useAddGroupMutation();
 
-      const {
-        data: groups,
-        error,
-       isError,
-        isFetching,
-  } = useGetGroupsQuery( { refetchOnReconnect: true } );
-  
+  const {
+    data: groups,
+    error,
+    isError,
+    isFetching,
+  } = useGetGroupsQuery({ refetchOnReconnect: true });
 
   const handleSubmit = async (e) => {
-    LoadingToast();
+    // LoadingToast();
     e.preventDefault();
     if (e.target[0].value === "") {
       ErrorToast("Group name cannot be blank");
@@ -31,14 +27,16 @@ const CreateGroup = () =>
         console.log(e.target[0].value);
         const createdGroup = await addGroup({
           GroupName: e.target[0].value,
-          Description: e.target[0].value, 
+          Description: e.target[0].value,
         }).unwrap();
         const { message } = createdGroup.data;
 
         if (message) {
           console.log("Group added successfully");
-          SuccessToast("Group added successfully"); 
+          SuccessToast("Group added successfully");
+
           console.log(`Groups: ${groups}`);
+          onClose();
           if (groups) {
             console.log(groups.length);
             groups.forEach((element) => {
@@ -96,7 +94,7 @@ const CreateGroup = () =>
             Description:
             <textarea id="postContent" name="postContent" />
           </label>
-          <button type="submit">{isLoading ? "Loading" : "Save Post"}</button>
+          <button type="submit">{isLoading ? "Loading" : "Save Group"}</button>
         </form>
       </section>
     </div>
