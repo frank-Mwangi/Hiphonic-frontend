@@ -13,7 +13,9 @@ const PostLists = () => {
   } = useGetPostsQuery({ refetchOnReconnect: true });
 
   console.log(
-    `Posts: ${posts}, Error: ${error}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
+    `Posts: ${posts}, Error: ${JSON.stringify(
+      error
+    )}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
   );
 
   if (isLoading || isFetching) {

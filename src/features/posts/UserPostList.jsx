@@ -14,13 +14,15 @@ const UserPostList = () => {
     isFetching,
   } = useGetPostsByUserQuery(UserID);
   console.log(
-    `Posts: ${posts}, Error: ${error}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
+    `Posts: ${posts}, Error: ${JSON.stringify(
+      error
+    )}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
   );
 
   if (isLoading || isFetching) {
     return <ClipLoader color="#000" loading={true} size={150} />;
   }
-  if (isError) {
+  if (isError || error) {
     return <div>Error: {error}</div>;
   }
   return (

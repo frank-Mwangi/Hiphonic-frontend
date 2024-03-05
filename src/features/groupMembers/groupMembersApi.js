@@ -10,6 +10,9 @@ export const groupMembersApi = createApi({
     getGroupMembers: builder.query({
       query: () => `groupmembers/:MemberID/ ${MemberID}`,
     }),
+    getAllGroupMembers: builder.query({
+      query: (GroupID) => `groupmembers/all/${GroupID}`,
+    }),
 
     addGroupMember: builder.mutation({
       query: (groupmember) => ({
@@ -39,6 +42,7 @@ export const groupMembersApi = createApi({
 
 export const {
   useGetGroupMembersQuery,
+  useGetAllGroupMembersQuery,
   useAddGroupMemberMutation,
   useUpdateGroupMutation,
   useDeleteGroupMemberMutation,

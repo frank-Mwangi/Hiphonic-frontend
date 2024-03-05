@@ -9,7 +9,7 @@ export const groupsApi = createApi({
   endpoints: (builder) => ({
     getGroups: builder.query({
       query: () => `groups/allgroups`,
-      providesTags: ["Groups"],
+      providesTags: ['Groups']
     }),
 
     addGroup: builder.mutation({
@@ -18,8 +18,14 @@ export const groupsApi = createApi({
         method: "POST",
         body: group,
       }),
+
       invalidatesTags: ["Groups"],
     }),
+      getGroup: builder.query({
+      query: (GroupID) => `groups/${GroupID}`,
+      providesTags: ["Groups"],
+    }),
+     
 
     updateGroup: builder.mutation({
       query: (GroupID) => ({
@@ -40,7 +46,10 @@ export const groupsApi = createApi({
 
 export const {
   useGetGroupsQuery,
-  useAddGroupMutation,
-  useUpdateGroupMutation,
-  useDeleteGroupMutation,
-} = groupsApi;
+  useGetGroupQuery,
+    useAddGroupMutation,
+    useUpdateGroupMutation,
+    useDeleteGroupMutation,
+} = groupsApi
+
+

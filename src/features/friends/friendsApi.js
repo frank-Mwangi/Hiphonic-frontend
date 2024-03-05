@@ -9,27 +9,39 @@ export const friendsApi = createApi({
       query: (UserID) => `friendship/friends/${UserID}`,
       providesTags: ["friendships"],
     }),
+
     addFriendship: builder.mutation({
       query: (friendship) => ({
-        url: "friendships",
+        url: "friendship",
         method: "POST",
         body: friendship,
       }),
       invalidatesTags: ["friendships"],
     }),
 
+    deleteFriendshipByID: builder.mutation({
+      query: (User1ID, User2ID) => ({
+        url: `friendship/delete/${User1ID}/${User2ID}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["friendships"],
+    }),
+
     deleteFriendship: builder.mutation({
       query: (FriendshipID) => ({
-        url: `friendships/${FriendshipID}`,
+        url: `friendship/delete/${FriendshipID}`,
         method: "DELETE",
       }),
       invalidatesTags: ["friendships"],
     }),
   }),
 });
+  
+
 
 export const {
   useGetFriendsQuery,
   useAddFriendshipMutation,
   useDeleteFriendshipMutation,
+  useDeleteFriendshipByIDMutation,
 } = friendsApi;

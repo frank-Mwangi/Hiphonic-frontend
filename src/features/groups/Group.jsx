@@ -17,14 +17,15 @@ import {
   ToasterContainer,
   LoadingToast,
 } from "../../components/Toaster";
+// import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
+import IndividualGroup from "../../pages/IndividualGroup";
 
-const Group = ( { group } ) =>
-{
+const Group = ({ group }) => {
   const [joinGroup, setJoinGroup] = useState(false);
   const [addGroupMember, { isLoading }] = useAddGroupMemberMutation();
   const [deleteGroupMember] = useDeleteGroupMemberMutation();
-  // const dispatch = useDispatch();
-
+  const [showGroupDetails, setShowGroupDetails] = useState(false);
   const user = JSON.parse(localStorage.getItem("userDetails"));
 
   const handleJoin = async () => {
@@ -45,6 +46,10 @@ const Group = ( { group } ) =>
       console.error("Error joining group:", error);
       ErrorToast("Failed to join group. Please try again.");
     }
+  };
+
+  const handleShowGroupDetails = () => {
+    setShowGroupDetails(!showGroupDetails);
   };
 
   const handleLeave = async () => {
@@ -85,38 +90,85 @@ const Group = ( { group } ) =>
   // };
 
   return (
-    // <div className="images">
-    <div className="card">
-      <div className="details">
-        <div className="details-left">
-          <ToasterContainer />
-          <span className="logo">
-            <img src={UD} alt="no-icon" />
-          </span>
-          <div className="group-name">
-            <h4>{group.GroupName}</h4>
-            <span>
-              <p>{group.Description} </p>
-              <img src={dot} alt="" />
-              <p> 7 posts a day</p>
+    <div className="group1">
+      <div className="card">
+        <div className="details">
+          <div className="details-left">
+            <ToasterContainer />
+            <span className="logo">
+              <img src={UD} alt="no-icon" />
             </span>
+            <div className="group-name">
+              {/* <Link to={`${group.GroupID}`}></Link> */}
+              <h4>{group.GroupName}</h4>
+              <span>
+                <p>{group.Description} </p>
+                <img src={dot} alt="" />
+                <p> 7 posts a day</p>
+              </span>
+            </div>
           </div>
+          <span>
+            <img src={dots} alt="" />
+          </span>
         </div>
-        <span>
-          <img src={dots} alt="" />
-        </span>
+        <div className="image">
+          <img src={group1} alt="" />
+        </div>
+        <div className="bottom">
+          {joinGroup ? (
+            <button onClick={handleLeave}> Leave Group</button>
+          ) : (
+            <button onClick={handleJoin}>Join Group</button>
+          )}
+        </div>
+        <button onClick={handleShowGroupDetails}>Show More</button>
       </div>
-      <div className="image">
-        <img src={group1} alt="" />
+      <div className="card">
+        <div className="details">
+          <div className="details-left">
+            <ToasterContainer />
+            <span className="logo">
+              <img src={UD} alt="no-icon" />
+            </span>
+            <div className="group-name">
+              {/* <Link to={`${group.GroupID}`}> */}
+
+              {/* </Link> */}
+              <h4>{group.GroupName}</h4>
+              <span>
+                <p>{group.Description} </p>
+                <img src={dot} alt="" />
+                <p> 7 posts a day</p>
+              </span>
+            </div>
+          </div>
+          <span>
+            <img src={dots} alt="" />
+          </span>
+        </div>
+        <div className="image">
+          <img src={group1} alt="" />
+        </div>
+        <div className="bottom">
+          {joinGroup ? (
+            <button onClick={handleLeave}> Leave Group</button>
+          ) : (
+            <button onClick={handleJoin}>Join Group</button>
+          )}
+        </div>
+        <button onClick={handleShowGroupDetails}>Show More</button>
       </div>
-      <div className="bottom">
-        {joinGroup ? (
-          <button onClick={handleLeave}> Leave Group</button>
-        ) : (
-          <button onClick={handleJoin}>Join Group</button>
+      {showGroupDetails &&
+        createPortal(
+          <IndividualGroup
+            group={group}
+            handleShowGroupDetails={handleShowGroupDetails}
+          />,
+          document.body
         )}
-      </div>
     </div>
+    // <div className="images">
   );
 };
 

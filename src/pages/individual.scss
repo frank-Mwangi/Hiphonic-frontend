@@ -1,0 +1,50 @@
+.individual-group {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  justify-content: center;
+  border-radius: 10px;
+  position: fixed;
+  width: 60%;
+  top: 8%;
+  left: 20%;
+  height: 90vh;
+  z-index: 1;
+  //background-image: url("../../assets/HeaderImg.jpg");
+  background-color: #fff;
+  opacity: 100%;
+  animation: unfold 0.9s forwards;
+  box-shadow: 10px 10px 8px black;
+  .group-details {
+    // border: 2px solid yellow;
+    flex-direction: column;
+    display: flex;
+    //justify-content: center;
+    width: 90%;
+    .title {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20%;
+    }
+    .group-image {
+      margin: 10px;
+      img {
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+    p {
+      padding: 10px;
+    }
+    h3 {
+      font-weight: bold;
+      text-decoration: underline;
+      padding: 10px;
+    }
+    .members {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+  }
+}

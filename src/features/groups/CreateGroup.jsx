@@ -1,13 +1,14 @@
 import { useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
+
 import {
   SuccessToast,
   ErrorToast,
   ToasterContainer,
-  LoadingToast,
+  // LoadingToast,
 } from "../../components/Toaster";
 import "./CreateGroup.scss";
 
-const CreateGroup = () => {
+const CreateGroup = ({ onClose }) => {
   const [addGroup, { isLoading }] = useAddGroupMutation();
   //const [getGroups] = useAddGroupMutation();
 
@@ -19,7 +20,7 @@ const CreateGroup = () => {
   } = useGetGroupsQuery({ refetchOnReconnect: true });
 
   const handleSubmit = async (e) => {
-    LoadingToast();
+    // LoadingToast();
     e.preventDefault();
     if (e.target[0].value === "") {
       ErrorToast("Group name cannot be blank");
@@ -38,6 +39,7 @@ const CreateGroup = () => {
           SuccessToast("Group added successfully");
 
           console.log(`Groups: ${groups}`);
+          onClose();
           if (groups) {
             console.log(groups.length);
             groups.forEach((element) => {
@@ -96,7 +98,7 @@ const CreateGroup = () => {
             Description:
             <textarea id="postContent" name="postContent" />
           </label>
-          <button type="submit">{isLoading ? "Loading" : "Save Post"}</button>
+          <button type="submit">{isLoading ? "Loading" : "Save Group"}</button>
         </form>
       </section>
     </div>
