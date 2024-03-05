@@ -92,38 +92,33 @@
     img {
       height: 20px;
       position: relative;
-    
-    
-
     }
-    .counter{
-       background-color: red;
-       border-radius: 50%;
-       height: 13px; 
-       width: 13px;
-       font-size: 12px;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       color: #fff;
-       position: absolute;
-       top: -5px;
-       right: -5px;
-
+    .counter {
+      background-color: red;
+      border-radius: 50%;
+      height: 13px;
+      width: 13px;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      position: absolute;
+      top: -5px;
+      right: -5px;
     }
     .profilePic {
       height: 40px;
       width: 40px;
       //border-radius: 50%;
     }
-
-}
-@media screen and (max-width: 768px) {
-  #showMenu {
-    display: block;
-
   }
-  .menu1 {
-    display: none;
+  @media screen and (max-width: 768px) {
+    #showMenu {
+      display: block;
+    }
+    .menu1 {
+      display: none;
+    }
   }
 }

@@ -53,6 +53,7 @@ const EventDetails = ({ event, handleOpenEvent }) => {
       <div>{event.Description}</div>
       <div className="attendees">
         <h3>Attendees</h3>
+        {LoadingToast(false)}
         {attendees &&
           [...attendees]
             .sort((a, b) => a.Username - b.Username)

@@ -31,7 +31,6 @@ import {
 } from "../components/Toaster";
 import EditPost from "./posts/EditPost";
 
-
 const Post = ({ post }) => {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState(0);
@@ -43,7 +42,6 @@ const Post = ({ post }) => {
   const [writeComment, setWriteComment] = useState(false);
   const [showEditPostForm, setShowEditPostForm] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
-
 
   const user = JSON.parse(localStorage.getItem("userDetails"));
   const navigate = useNavigate();
@@ -89,20 +87,20 @@ const Post = ({ post }) => {
     setComments(comments + 1);
   };
 
-  const handleNotification = (type) =>{
+  const handleNotification = (type) => {
     console.log("Sending notification...");
     console.log("Sender:", user.Username);
     console.log("Receiver:", post.Username);
     console.log("Type:", type);
-   
+
     setLikes(true);
-     
-    socket.emit("sendNotification",{
+
+    socket.emit("sendNotification", {
       senderName: user.Username,
       receiverName: post.Username,
       type,
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -124,25 +122,27 @@ const Post = ({ post }) => {
             <img src={photo2} alt="no-pic" />
           </div> */}
 
-          <div className="impressions">
-            <div className="impression" onClick={() => setLikes(likes + 1)}>
-              <img src={heart} alt="like-icon" 
-              onClick={()=>handleNotification(1)}
-               />
-              <p>
-                {likes}
-                <span> Likes</span>
-              </p>
-            </div>
-
         <div className="impressions">
+          <div className="impression" onClick={() => setLikes(likes + 1)}>
+            <img
+              src={heart}
+              alt="like-icon"
+              onClick={() => handleNotification(1)}
+            />
+            <p>
+              {likes}
+              <span> Likes</span>
+            </p>
+          </div>
+
+          {/* <div className="impressions">
           <div className="impression" onClick={() => setLikes(likes + 1)}>
             <img src={heart} alt="like-icon" />
             <p>
               {likes}
               <span> Likes</span>
             </p>
-          </div>
+          </div> */}
           <div className="impression" onClick={handleWriteComment}>
             <img src={comment} alt="comment-icon" />
             <p>
@@ -158,24 +158,25 @@ const Post = ({ post }) => {
             </p>
           </div>
           {user.UserID === post.UserID && (
+            // <div
+            //   className="impression"
+            //   onClick={() => setShowOptions(!showOptions)}
+            // >
 
-            <div
-              className="impression"
-              onClick={() => setShowOptions(!showOptions)}
-            >
-
-              <img src={comment} alt="comment-icon" 
-              onClick={()=>handleNotification(2)}
-              />
-              <p>
-                {comments}
-                <span> Comments</span>
-              </p>
-            </div>
+            //   <img src={comment} alt="comment-icon"
+            //   onClick={()=>handleNotification(2)}
+            //   />
+            //   <p>
+            //     {comments}
+            //     <span> Comments</span>
+            //   </p>
+            // </div>
             <div className="impression" onClick={() => setShares(shares + 1)}>
-              <img src={share} alt="share-icon"
-              onClick={()=>handleNotification(3)}
-               />
+              <img
+                src={share}
+                alt="share-icon"
+                onClick={() => handleNotification(3)}
+              />
               <p>
                 {shares}
                 <span> Share</span>
@@ -194,7 +195,6 @@ const Post = ({ post }) => {
                 <img src={trash} alt="delete-icon" />
                 <p>{isLoading ? "Deleting.." : "Delete"}</p>
               </span>
-
             </div>
           )}
           {writeComment &&

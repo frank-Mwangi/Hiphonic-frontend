@@ -32,9 +32,11 @@ const CreateGroup = () => {
         }).unwrap();
         const { message } = createdGroup.data;
 
+        LoadingToast(false);
         if (message) {
           console.log("Group added successfully");
           SuccessToast("Group added successfully");
+
           console.log(`Groups: ${groups}`);
           if (groups) {
             console.log(groups.length);
@@ -44,8 +46,9 @@ const CreateGroup = () => {
           }
         }
       } catch (error) {
+        LoadingToast(false);
         console.error("Failed to add group:", error);
-        SuccessToast("group added successfully");
+        //ErrorToast(error);
       }
     }
   };
