@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./navbar.scss";
 //import Navbody from "./Navbody";
 //import Search from "./Search";
@@ -15,15 +15,48 @@ import chevron from "../assets/chevron-down.png";
 import { useState } from "react";
 import Notifications from "../pages/Notifications";
 import Sidebar from "./Sidebar";
+
+import { useSocket } from "../socketContext";
+
 import { useNavigate } from "react-router-dom";
+
 
 //import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showNotification, setShowNotification] = useState(false);
+
+  // const [notifications,setNotifications ] = useState([]);
+  
+  // const socket = useSocket();
+
+  // useEffect(() =>{
+  //   socket?.on("getNotification", (data) =>{
+  //     setNotifications((prev) =>[...prev, data]);
+  //   })
+  // },[socket]);
+
+  // console.log(notifications)
+
+  // const displayNotification=({senderName,type }) =>{
+  //   let action;
+
+  //   if (type ===1){
+  //     action= "Liked"
+  //   }else if(type ===2){
+  //     action="commented"
+  //   } else{
+  //     action = "shared"
+  //   }
+  //   return(
+  //     <span className="notification">{`${senderName} ${action} your post`}</span>
+  //   )
+  // }
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
+
 
   const handleClickNotif = () => {
     setShowNotification(!showNotification);
@@ -63,7 +96,9 @@ const Navbar = () => {
           <span onClick={handleClickNotif}>
             <img src={notification} alt="no-icon" />
             {showNotification && <Notifications closeNote={handleClickNotif} />}
+            <div className="counter">2</div>
           </span>
+         
           <img src={profilePic} alt="no-icon" className="profilePic" />
           <span onClick={toggleLogout}>
             <img src={chevron} alt="no-icon" />

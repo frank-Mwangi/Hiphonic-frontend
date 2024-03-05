@@ -33,7 +33,7 @@ const PostLists = () => {
         </section>
       </div>
     );
-  }
-};
+  };
+
 
 export default PostLists;

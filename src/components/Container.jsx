@@ -21,6 +21,7 @@ import CommentList from "../features/comments/CommentList.jsx";
 import CommentsPage from "../pages/CommentsPage.jsx";
 
 export const notifContext = createContext();
+
 const Container = () => {
   const [notificationClicked, setNotificationClicked] = useState(false);
   return (

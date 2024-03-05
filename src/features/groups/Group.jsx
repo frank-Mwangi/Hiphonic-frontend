@@ -6,6 +6,7 @@ import UD from "../../assets/Avatar (10).png";
 import dot from "../../assets/dot.png";
 import "./group.scss";
 import { useState } from "react";
+// import { UseDispatch } from "react-redux";
 import {
   useAddGroupMemberMutation,
   useDeleteGroupMemberMutation,
@@ -22,6 +23,7 @@ const Group = ( { group } ) =>
   const [joinGroup, setJoinGroup] = useState(false);
   const [addGroupMember, { isLoading }] = useAddGroupMemberMutation();
   const [deleteGroupMember] = useDeleteGroupMemberMutation();
+  // const dispatch = useDispatch();
 
   const user = JSON.parse(localStorage.getItem("userDetails"));
 
@@ -33,6 +35,12 @@ const Group = ( { group } ) =>
       });
       setJoinGroup(true);
       SuccessToast("Joined group successfully");
+      // dispatch({
+      //   type: "ADD_NOTIFFICATION",
+      //   group_Name: group.GroupName,
+      //   name: user.UserName,
+      //   message: `Welcome to "${group.GroupName}" Group`
+      // })
     } catch (error) {
       console.error("Error joining group:", error);
       ErrorToast("Failed to join group. Please try again.");
@@ -44,6 +52,13 @@ const Group = ( { group } ) =>
       await deleteGroupMember(group.GroupID, user.UserID);
       setJoinGroup(false);
       SuccessToast("Left group successfully");
+      // dispatch({
+      //   type: "ADD_NOTIFICATION",
+      //   group_Name: group.GroupName,
+      //   name: user.UserName,
+      //   message: `You left "${group.GroupName}" Group`
+
+      // })
     } catch (error) {
       console.error("Error leaving group:", error);
       ErrorToast("Failed to leave group. Please try again.");
