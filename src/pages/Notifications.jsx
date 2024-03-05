@@ -7,8 +7,15 @@ import avatar4 from "../assets/Avatar (6).png";
 import avatar5 from "../assets/Avatar (7).png";
 import avatar6 from "../assets/Avatar (8).png";
 import "./notifications.scss";
+import { useSocket } from "../socketContext";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const Notifications = ({ closeNote }) => {
+const Notifications = ({ closeNote}) => {
+
+  const socket = useSocket();
+  const [notifications,setNotifications ] = useState([]);
+
   const notifs = [
     {
       icon: avatar0,
@@ -47,6 +54,28 @@ const Notifications = ({ closeNote }) => {
     },
   ];
 
+  useEffect(() =>{
+    socket?.on("getNotification", (data) =>{
+      setNotifications((prev) =>[...prev, data]);
+    })
+  },[socket]);
+
+  console.log(notifications)
+  const displayNotification=({senderName,type }) =>{
+    let action;
+
+    if (type ===1){
+      action= "Liked"
+    }else if(type ===2){
+      action="commented"
+    } else{
+      action = "shared"
+    }
+    return(
+      <span className="notification">{`${senderName} ${action} your post`}</span>
+    )
+  }
+
   return (
     <div className="notifs-container">
       <div className="notifs">
@@ -58,9 +87,12 @@ const Notifications = ({ closeNote }) => {
           <span>All Notifications</span>
           <span>Unread</span>
         </div>
+        <div className="notifications">
+            {notifications.map((n) =>displayNotification(n))}
+          </div>
 
-        {notifs &&
-          notifs.map((item, index) => (
+        {notifications &&
+          notifications.map((item, index) => (
             <div className="notif" key={index}>
               <img src={item.icon} alt="no-icon" />
               <div className="notif-details">

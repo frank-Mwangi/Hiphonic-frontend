@@ -8,7 +8,7 @@ export const groupMembersApi = createApi({
   tagTypes: ["GroupMembers"],
   endpoints: (builder) => ({
     getGroupMembers: builder.query({
-      query: () => `groupmembers/:MemberID`,
+      query: () => `groupmembers/:MemberID/ ${MemberID}`,
     }),
     getAllGroupMembers: builder.query({
       query: (GroupID) => `groupmembers/all/${GroupID}`,

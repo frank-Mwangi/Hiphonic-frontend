@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Login.scss";
 import { fetchUser } from "../features/users/usersSlice";
-import { ErrorToast, LoadingToast } from "./Toaster";
+import { ErrorToast, LoadingToast, SuccessToast, ToasterContainer } from "./Toaster";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ const Login = () => {
       if (token) {
         localStorage.setItem("token", token);
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
+        SuccessToast("Login succeful")
 
         navigate("/home");
       }
@@ -51,6 +52,7 @@ const Login = () => {
   return (
     <>
       <div className="logincontainer">
+        <ToasterContainer/>
         <form action="" className="login" onSubmit={handleSubmit(onSubmit)}>
           <h1>Login...</h1>
           <input

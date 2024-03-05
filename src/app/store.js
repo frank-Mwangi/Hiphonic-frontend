@@ -9,6 +9,7 @@ import { groupMembersApi } from "../features/groupMembers/groupMembersApi.js";
 import { eventsApi } from "../features/events/eventsApi.js";
 import { videosApi } from "../features/videos/videosApi.js";
 import { photoApi } from "../features/photos/photoApi.js";
+import { commentApi } from "../features/comments/commentApi.js";
 import { messageApi } from "../features/messages/messageApi.js";
 
 export const store = configureStore({
@@ -22,6 +23,7 @@ export const store = configureStore({
     [photoApi.reducerPath]: photoApi.reducer,
     [groupsApi.reducerPath]: groupsApi.reducer,
     [groupMembersApi.reducerPath]: groupMembersApi.reducer,
+    [commentApi.reducerPath]: commentApi.reducer,
     [messageApi.reducerPath]: messageApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -34,6 +36,7 @@ export const store = configureStore({
       photoApi.middleware,
       groupsApi.middleware,
       groupMembersApi.middleware,
+      commentApi.middleware,
       messageApi.middleware,
     ),
 });

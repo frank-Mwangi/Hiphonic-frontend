@@ -1,11 +1,12 @@
 .post {
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
+  //border-radius: 10px;
   background-color: #fff;
   padding-right: 10px;
+  padding-bottom: 10px;
   margin-top: 20px;
-  //border: 2px solid salmon;
+  border-bottom: 1px solid gray;
   .handle {
     display: flex;
     align-items: center;
@@ -26,7 +27,7 @@
       p {
         font-size: 12px;
         position: relative;
-        top: -30px;
+        //top: -30px;
         color: gray;
       }
     }
@@ -64,6 +65,19 @@
       p {
         color: gray;
         font-weight: bold;
+      }
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      span {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        //border: 2px solid purple;
+        img {
+          height: 25px;
+        }
       }
     }
   }

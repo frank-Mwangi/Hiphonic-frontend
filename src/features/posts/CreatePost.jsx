@@ -7,29 +7,37 @@ import {
 } from "../../components/Toaster";
 
 
+
 const CreatePost = () =>
 {
+  const user =JSON.parse(localStorage.getItem("userDetails"));
+
    const [addPost, { isLoading }] = useAddPostMutation();
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     LoadingToast();
     e.preventDefault();
     if (e.target[0].value === "") {
       ErrorToast("Post cannot be blank");
     } else {
-      addPost({
-        post_content: e.target[0].value,
+      try {
+
+      const response = await addPost({
+        UserID: user.UserID,
+        Content: e.target[0].value,
       })
         .unwrap()
-        .then(() => {
-         
-          SuccessToast("Post added successfully");
+        
+         console.log(response)
+          SuccessToast(response.message);
           e.target.reset();
-        })
-        .catch((error) => {
+    }
+        catch(error) {
           
           console.error("Failed to add post:", error);
           ErrorToast("Failed to add post. Please try again.");
-        });
+        };
+
     }
   };
 

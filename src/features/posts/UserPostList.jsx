@@ -14,19 +14,24 @@ const UserPostList = () => {
     isFetching,
   } = useGetPostsByUserQuery(UserID);
   console.log(
-    `Posts: ${posts}, Error: ${error}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
+    `Posts: ${posts}, Error: ${JSON.stringify(
+      error
+    )}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
   );
 
   if (isLoading || isFetching) {
     return <ClipLoader color="#000" loading={true} size={150} />;
   }
-  if (isError) {
-    return <div>Error: {error.data.message}</div>;
+  if (isError || error) {
+    return <div>Error: {error}</div>;
   }
   return (
     <div className="postsList">
       <section className="posts-container">
-        {posts && posts.map((post, index) => <Post key={index} post={post} />)}
+        {posts &&
+          [...posts]
+            .sort((a, b) => b.PostID - a.PostID)
+            .map((post, index) => <Post key={index} post={post} />)}
       </section>
     </div>
   );

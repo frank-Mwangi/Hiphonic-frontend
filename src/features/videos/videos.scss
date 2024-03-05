@@ -58,7 +58,10 @@
     .hero {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-evenly;
+      width: 100%;
+      overflow-y: scroll;
       .card {
         border-radius: 10px;
         width: 25%;
@@ -68,14 +71,19 @@
         background-color: #e8eff7;
         justify-content: center;
         video {
+          //border: 2px solid red;
           width: 90%;
+          height: 80%;
+          margin-top: 0;
           border-radius: 10px;
           border: none;
         }
 
         button {
           //border: 2px solid red;
-          height: 60px;
+          height: 30px;
+          margin-bottom: 20px;
+          margin-top: 20px;
           background-color: #fff;
           border-radius: 6px;
           border: none;

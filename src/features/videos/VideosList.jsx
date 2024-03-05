@@ -23,9 +23,9 @@ const VideosList = () => {
     isLoading,
   } = useGetVideosQuery({ refetchOnReconnect: true });
 
-  console.log(
-    `Videos: ${videos}, Error: ${error}, isError: ${isError}, Loading: ${loading}, isLoading: ${isLoading}`
-  );
+  // console.log(
+  //   `Videos: ${videos}, Error: ${error}, isError: ${isError}, Loading: ${loading}, isLoading: ${isLoading}`
+  // );
 
   const user = JSON.parse(localStorage.getItem("userDetails"));
   const {
@@ -36,9 +36,9 @@ const VideosList = () => {
     isLoading: isFetching,
   } = useGetVideosUploadedByUserQuery({ refetchOnReconnect: true });
 
-  console.log(
-    `UserVideos: ${userVideos}, Error: ${err}, isError: ${isErr}, Loading: ${fetching}, isLoading: ${isFetching}`
-  );
+  // console.log(
+  //   `UserVideos: ${userVideos}, Error: ${err}, isError: ${isErr}, Loading: ${fetching}, isLoading: ${isFetching}`
+  // );
 
   //   [...videos].sort((a, b) => {
   //     return b.id - a.id;
@@ -69,7 +69,7 @@ const VideosList = () => {
           {isError && <div>Error: {error.data.message}</div>}
           {videos &&
             [...videos]
-              .sort((a, b) => b.id - a.id)
+              .sort((a, b) => b.VideoID - a.VideoID)
               .map((video, index) => <Video key={index} video={video} />)}
         </div>
       </div>

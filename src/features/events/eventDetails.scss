@@ -1,0 +1,46 @@
+.event-deets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid black;
+  align-items: center;
+  border-radius: 10px;
+  position: fixed;
+  width: 50%;
+  top: 0%;
+  left: 25%;
+  z-index: 1;
+  //background-image: url("../../assets/HeaderImg.jpg");
+  background-color: #fff;
+  opacity: 100%;
+  animation: unfold 0.9s forwards;
+  box-shadow: 10px 10px 8px black;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  height: 90vh;
+  .title {
+    display: flex;
+    width: 100%;
+    gap: 35%;
+
+    h1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .back_img {
+      img {
+        margin-left: 10px;
+      }
+    }
+  }
+  .event-poster {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 70vh;
+      height: 50vh;
+      border-radius: 10px;
+    }
+  }
+}

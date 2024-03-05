@@ -1,10 +1,12 @@
 import { useAddGroupMutation, useGetGroupsQuery } from "./groupsApi";
+
 import {
   SuccessToast,
   ErrorToast,
   ToasterContainer,
   // LoadingToast,
 } from "../../components/Toaster";
+import "./CreateGroup.scss";
 
 const CreateGroup = ({ onClose }) => {
   const [addGroup, { isLoading }] = useAddGroupMutation();
@@ -31,6 +33,7 @@ const CreateGroup = ({ onClose }) => {
         }).unwrap();
         const { message } = createdGroup.data;
 
+        LoadingToast(false);
         if (message) {
           console.log("Group added successfully");
           SuccessToast("Group added successfully");
@@ -45,8 +48,9 @@ const CreateGroup = ({ onClose }) => {
           }
         }
       } catch (error) {
+        LoadingToast(false);
         console.error("Failed to add group:", error);
-        SuccessToast("group added successfully");
+        //ErrorToast(error);
       }
     }
   };
@@ -81,7 +85,7 @@ const CreateGroup = ({ onClose }) => {
   //   }
   // };
   return (
-    <div>
+    <div className="createGroupPage">
       <section>
         <ToasterContainer />
         <h2>Add a New Group</h2>
