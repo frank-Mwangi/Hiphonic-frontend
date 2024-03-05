@@ -17,7 +17,7 @@ const Video = ({ video }) => {
       <video src={video.VideoURL} controls></video>
       <div className="caption">
         <h5>{video.Category}</h5>
-        <span className="cascaded-images"></span>
+        <span className="cascadedd-images"></span>
       </div>
       <button>See all</button>
       {video.UserID == user.UserID && (

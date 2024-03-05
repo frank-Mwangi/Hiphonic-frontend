@@ -1,5 +1,4 @@
 import { useAddPhotoMutation } from "./photoApi";
-import "./CreateGroup.scss";
 
 const CreatePhoto = () => {
   const [addPhoto, { isLoading }] = useAddPhotoMutation();
