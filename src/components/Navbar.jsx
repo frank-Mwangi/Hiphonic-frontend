@@ -71,6 +71,7 @@ const Navbar = () => {
               <button
                 className="logout"
                 onClick={() => {
+                  localStorage.clear();
                   navigate("/login");
                 }}
               >

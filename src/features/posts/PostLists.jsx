@@ -12,8 +12,6 @@ const PostLists = () => {
     isFetching,
   } = useGetPostsQuery({ refetchOnReconnect: true });
 
-  // const response = useGetPostsQuery();
-  console.log("Response ni: ", posts);
   console.log(
     `Posts: ${posts}, Error: ${error}, isLoading: ${isLoading}, isError: ${isError}, isFetching: ${isFetching}`
   );
@@ -21,21 +19,21 @@ const PostLists = () => {
   if (isLoading || isFetching) {
     return <ClipLoader color="#000" loading={true} size={150} />;
   }
-  if (isError) {
+  if (error || isError || posts.length == 0) {
+    console.log("Error caught");
+    return <div>Error: {"An error occurred. Couldn't fetch posts"}</div>;
+  } else {
     return (
-      <div>Error: {error.data ? error.data.message : "An error occurred"}</div>
+      <div className="postsList">
+        <section className="posts-container">
+          {posts &&
+            [...posts]
+              .sort((a, b) => b.PostID - a.PostID)
+              .map((post, index) => <Post key={index} post={post} />)}
+        </section>
+      </div>
     );
   }
-  return (
-    <div className="postsList">
-      <section className="posts-container">
-        {posts &&
-          [...posts]
-            .sort((a, b) => b.PostID - a.PostID)
-            .map((post, index) => <Post key={index} post={post} />)}
-      </section>
-    </div>
-  );
 };
 
 export default PostLists;

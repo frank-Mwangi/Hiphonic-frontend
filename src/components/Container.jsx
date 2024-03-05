@@ -17,6 +17,8 @@ import FriendsList from "../features/friends/FriendsLists.jsx";
 import Eventlist from "../pages/Eventlist.jsx";
 import VideosList from "../features/videos/VideosList.jsx";
 import PhotoLists from "../features/photos/photoLists.jsx";
+import CommentList from "../features/comments/CommentList.jsx";
+import CommentsPage from "../pages/CommentsPage.jsx";
 
 export const notifContext = createContext();
 const Container = () => {
@@ -33,13 +35,13 @@ const Container = () => {
           <Routes>
             <Route path="/notifications" element={<Notifications />} />
             {/* <Route path="/login" element={<Login />} /> */}
-            <Route path="/home/" element={<MainContent />} />
-            <Route path="/timeline" element={<Timeline />} />
+            <Route path="/home/*" element={<MainContent />} />
+            <Route path="/timeline/*" element={<Timeline />} />
             <Route path="/friends" element={<FriendsList />} />
             <Route path="/groups" element={<GroupsTop />} />
             <Route path="/events" element={<Eventlist />} />
             <Route path="/videos" element={<VideosList />} />
-
+            <Route path="/comments/post/:PostID" element={<CommentsPage />} />
             <Route path="/photos" element={<PhotoLists />} />
           </Routes>
 

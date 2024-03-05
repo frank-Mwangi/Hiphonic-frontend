@@ -37,6 +37,12 @@
           height: 30px;
           width: 30px;
           border-radius: 50%;
+          gap: 5rem;
+          .search {
+            height: 30px;
+            border-radius: 10px;
+            padding: 5px;
+          }
           img {
             height: 20px;
           }
@@ -65,7 +71,7 @@
         height: 4rem;
         p {
           position: relative;
-          top: -40px;
+          // top: -40px;
           color: gray;
         }
       }

@@ -26,7 +26,7 @@ const GroupsTop = () => {
           <h1>Groups</h1>
           <div className="buttons">
             <span>
-              <input type="text" placeholder="Search..." />
+              <input type="text" className="search" placeholder="Search..." />
               <img src={search} alt="" />
             </span>
             <button
