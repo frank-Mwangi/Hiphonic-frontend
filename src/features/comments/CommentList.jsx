@@ -49,6 +49,7 @@ const CommentList = ({ PostID }) => {
   return (
     <div className="postsList">
       <section className="posts-container">
+        {LoadingToast(false)}
         {comments &&
           [...comments]
             .sort((a, b) => b.CommentID - a.CommentID)
